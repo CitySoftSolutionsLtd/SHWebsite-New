@@ -202,12 +202,21 @@
   document.querySelectorAll(".faq-item").forEach((item) => {
     const q = item.querySelector(".faq-q");
     const a = item.querySelector(".faq-a");
+    if (!q || !a) return;
+    q.setAttribute("type", q.getAttribute("type") || "button");
+    q.setAttribute("aria-expanded", "false");
     q.addEventListener("click", () => {
       const open = item.classList.contains("open");
       document.querySelectorAll(".faq-item.open").forEach((o) => {
-        if (o !== item) { o.classList.remove("open"); o.querySelector(".faq-a").style.maxHeight = null; }
+        if (o !== item) {
+          o.classList.remove("open");
+          o.querySelector(".faq-a").style.maxHeight = null;
+          const oq = o.querySelector(".faq-q");
+          if (oq) oq.setAttribute("aria-expanded", "false");
+        }
       });
       item.classList.toggle("open", !open);
+      q.setAttribute("aria-expanded", open ? "false" : "true");
       a.style.maxHeight = open ? null : a.scrollHeight + "px";
       if (lenis) setTimeout(() => ScrollTrigger && ScrollTrigger.refresh(), 560);
     });

@@ -87,6 +87,21 @@
   color: var(--ivory);
 }
 
+/* Skip link — off-screen until keyboard focus. Does not change the visual theme. */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 10000;
+  padding: 12px 18px;
+  background: var(--navy-900);
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+.skip-link:focus { left: 12px; top: 12px; }
+
 /* ---------- Reset ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 * { margin: 0; padding: 0; }
