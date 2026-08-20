@@ -60,7 +60,12 @@
 <body data-active="services" data-prefix="">
 
 <section class="page-hero" data-screen-label="Personal Tax Hero">
-  <div class="page-hero-bg is-gradient"><picture><source type="image/webp" srcset="images/bg-hero-02-640.webp 640w, images/bg-hero-02-1024.webp 1024w, images/bg-hero-02.webp 1680w" sizes="100vw" /><img src="images/bg-hero-02.jpg" alt="" decoding="async" srcset="images/bg-hero-02-640.jpg 640w, images/bg-hero-02-1024.jpg 1024w, images/bg-hero-02.jpg 1680w" sizes="100vw" /></picture></div>
+  <div class="page-hero-bg"><picture>
+      <source type="image/webp" media="(max-width: 760px)" srcset="images/office1-640.webp 640w, images/office1-mobile.webp 1080w" sizes="100vw" />
+      <source media="(max-width: 760px)" srcset="images/office1-640.jpg 640w, images/office1-mobile.jpg 1080w" sizes="100vw" />
+      <source type="image/webp" srcset="images/office1-1024.webp 1024w, images/office1.webp 1680w" sizes="100vw" />
+      <img src="images/office1.jpg" alt="Accountant reviewing a Canadian T1 return and spreadsheet at a desk lamp" decoding="async" srcset="images/office1-1024.jpg 1024w, images/office1.jpg 1680w" sizes="100vw" width="1680" height="938" />
+    </picture></div>
   <div class="page-hero-light"></div>
   <div class="page-hero-inner wrap">
     <nav class="breadcrumb" aria-label="Breadcrumb">
