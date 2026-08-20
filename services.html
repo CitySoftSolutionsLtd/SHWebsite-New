@@ -58,7 +58,12 @@
 
 <!-- ===================== PAGE HERO ===================== -->
 <section class="page-hero" data-screen-label="Services Hero">
-  <div class="page-hero-bg is-gradient"><picture><source type="image/webp" srcset="images/bg-hero-01-640.webp 640w, images/bg-hero-01-1024.webp 1024w, images/bg-hero-01.webp 1680w" sizes="100vw" /><img src="images/bg-hero-01.jpg" alt="" decoding="async" srcset="images/bg-hero-01-640.jpg 640w, images/bg-hero-01-1024.jpg 1024w, images/bg-hero-01.jpg 1680w" sizes="100vw" /></picture></div>
+  <div class="page-hero-bg"><picture>
+      <source type="image/webp" media="(max-width: 760px)" srcset="images/discussion-inner-640.webp 640w, images/discussion-inner-mobile.webp 1080w" sizes="100vw" />
+      <source media="(max-width: 760px)" srcset="images/discussion-inner-640.jpg 640w, images/discussion-inner-mobile.jpg 1080w" sizes="100vw" />
+      <source type="image/webp" srcset="images/discussion-inner-1024.webp 1024w, images/discussion-inner.webp 1680w" sizes="100vw" />
+      <img src="images/discussion-inner.jpg" alt="Tax advisors discussing a client file in a Canadian office" decoding="async" srcset="images/discussion-inner-1024.jpg 1024w, images/discussion-inner.jpg 1680w" sizes="100vw" width="1680" height="938" />
+    </picture></div>
   <div class="page-hero-light"></div>
   <div class="page-hero-inner wrap">
     <nav class="breadcrumb" aria-label="Breadcrumb">

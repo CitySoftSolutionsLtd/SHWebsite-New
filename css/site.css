@@ -402,6 +402,7 @@ em.gold, .gold-text { color: var(--gold-light); font-style: normal; }
   .hero, .page-hero { align-items: flex-start; }
   .hero .hero-inner, .page-hero .page-hero-inner { padding-top: 15vh; }
   .hero-bg img { transform-origin: 50% 38%; object-position: 50% 40%; }
+  .page-hero-bg:not(.is-gradient) img { transform-origin: 50% 30%; object-position: 50% 28%; }
   .hero-bg::after {
     background:
       linear-gradient(180deg, transparent 0%, transparent 86%, rgba(255,255,255,0.9) 95%, #ffffff 100%),
