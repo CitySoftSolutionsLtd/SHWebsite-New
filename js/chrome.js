@@ -81,6 +81,14 @@
     </div>`;
   document.body.insertBefore(header, document.body.firstChild);
 
+  const firstSection = document.querySelector("section");
+  if (firstSection && !firstSection.id) firstSection.id = "main-content";
+  const skip = document.createElement("a");
+  skip.className = "skip-link";
+  skip.href = firstSection && firstSection.id ? "#" + firstSection.id : "#main-content";
+  skip.textContent = "Skip to content";
+  document.body.insertBefore(skip, header);
+
   /* ---------------- MOBILE MENU ---------------- */
   const mm = document.createElement("div");
   mm.className = "mobile-menu";
