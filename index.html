@@ -38,7 +38,8 @@
 <link rel="manifest" href="site.webmanifest" />
 <link rel="sitemap" type="application/xml" href="https://shelevate.ca/sitemap.xml" />
 <link rel="preload" as="image" href="images/logo-white.png" />
-<link rel="preload" as="image" type="image/webp" imagesrcset="images/header-640.webp 640w, images/header-1024.webp 1024w, images/header.webp 1680w" imagesizes="100vw" fetchpriority="high" />
+<link rel="preload" as="image" type="image/webp" media="(max-width: 760px)" imagesrcset="images/header-640.webp 640w, images/header-mobile.webp 1080w" imagesizes="100vw" fetchpriority="high" />
+<link rel="preload" as="image" type="image/webp" media="(min-width: 761px)" imagesrcset="images/header-1024.webp 1024w, images/header.webp 1376w" imagesizes="100vw" fetchpriority="high" />
 <link rel="preload" href="fonts/sora-700.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="fonts/manrope-400.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="css/site.css" />
@@ -68,7 +69,12 @@
 <!-- ===================== HERO BANNER ===================== -->
 <section class="hero" id="top" data-screen-label="Hero">
   <div class="hero-bg">
-    <picture><source type="image/webp" srcset="images/header-640.webp 640w, images/header-1024.webp 1024w, images/header.webp 1680w" sizes="100vw" /><img src="images/header.jpg" alt="Modern glass skyscraper reflecting golden light"  decoding="async" srcset="images/header-640.jpg 640w, images/header-1024.jpg 1024w, images/header.jpg 1680w" sizes="100vw" /></picture>
+    <picture>
+      <source type="image/webp" media="(max-width: 760px)" srcset="images/header-640.webp 640w, images/header-mobile.webp 1080w" sizes="100vw" />
+      <source media="(max-width: 760px)" srcset="images/header-640.jpg 640w, images/header-mobile.jpg 1080w" sizes="100vw" />
+      <source type="image/webp" srcset="images/header-1024.webp 1024w, images/header.webp 1376w" sizes="100vw" />
+      <img src="images/header.jpg" alt="Glass office towers reflecting golden-hour light over a Canadian financial district" decoding="async" fetchpriority="high" srcset="images/header-1024.jpg 1024w, images/header.jpg 1376w" sizes="100vw" width="1376" height="768" />
+    </picture>
   </div>
   <div class="hero-light"></div>
   <div class="hero-light b"></div>
