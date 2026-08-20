@@ -144,7 +144,6 @@
           <ul>
             <li><a href="mailto:info@shelevate.ca">info@shelevate.ca</a></li>
             <li><a class="tel-inline" href="tel:+14379256546" aria-label="Call us at (437) 925-6546">${PHONE_SVG}<span>+1 (437) 925-6546</span></a></li>
-            <li><a class="tel-inline" href="tel:+19029198696" aria-label="Call our Atlantic line at (902) 919-8696">${PHONE_SVG}<span>+1 (902) 919-8696</span></a></li>
             <li>36 Lee Centre Dr, Scarborough ON M1H 3K2</li>
           </ul>
         </div>
@@ -239,7 +238,7 @@
     let currentTel = "";
 
     const digitsOf = (tel) => tel.replace(/[^0-9]/g, "");
-    const qrFor = (tel) => P + (digitsOf(tel).endsWith("9029198696") ? "images/call-qr-902.svg" : "images/call-qr-437.svg");
+    const qrFor = () => P + "images/call-qr-437.svg";
     const pretty = (tel) => {
       const d = digitsOf(tel).replace(/^1/, "");
       return d.length === 10 ? `+1 (${d.slice(0, 3)}) ${d.slice(3, 6)}-${d.slice(6)}` : tel;
@@ -248,7 +247,7 @@
     const onKey = (e) => { if (e.key === "Escape") close(); };
     function open(tel) {
       currentTel = tel;
-      qrImg.src = qrFor(tel);
+      qrImg.src = qrFor();
       numEl.href = "tel:" + tel;
       numEl.textContent = pretty(tel);
       copyBtn.classList.remove("copied");
