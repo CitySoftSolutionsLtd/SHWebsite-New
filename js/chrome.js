@@ -14,21 +14,11 @@
   const PHONE_SVG = '<svg class="tel-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><path d="M6.6 10.8a12 12 0 0 0 5.6 5.6l1.9-1.9a1 1 0 0 1 1-.24 9.6 9.6 0 0 0 3 .48 1 1 0 0 1 1 1V19a1 1 0 0 1-1 1A15.5 15.5 0 0 1 4 5a1 1 0 0 1 1-1h2.3a1 1 0 0 1 1 1 9.6 9.6 0 0 0 .48 3 1 1 0 0 1-.24 1z"/></svg>';
 
   const areas = [
-    { code: "ON", province: "Ontario", cities: [
-      ["Scarborough", P + "scarborough.html"],
-      ["Toronto", P + "service-areas.html"],
-      ["Hamilton", P + "service-areas.html"],
-      ["London", P + "service-areas.html"],
-      ["Sudbury", P + "service-areas.html"],
-      ["Thunder Bay", P + "service-areas.html"],
-    ]},
-    { code: "NL", province: "Newfoundland & Labrador", cities: [
-      ["Corner Brook", P + "service-areas.html"],
-      ["Province-wide", P + "service-areas.html"],
-    ]},
-    { code: "NS", province: "Nova Scotia", cities: [["Province-wide", P + "service-areas.html"]]},
-    { code: "PE", province: "Prince Edward Island", cities: [["Province-wide", P + "service-areas.html"]]},
-    { code: "AB", province: "Alberta", cities: [["Grande Prairie", P + "service-areas.html"]]},
+    { code: "ON", province: "Ontario", cities: ["Scarborough", "Toronto", "Hamilton", "London", "Sudbury", "Thunder Bay"] },
+    { code: "NL", province: "Newfoundland & Labrador", cities: ["Corner Brook", "Province-wide"] },
+    { code: "NS", province: "Nova Scotia", cities: ["Province-wide"] },
+    { code: "PE", province: "Prince Edward Island", cities: ["Province-wide"] },
+    { code: "AB", province: "Alberta", cities: ["Grande Prairie"] },
   ];
 
   const navLinks = [
@@ -42,7 +32,7 @@
     <div class="mega-col">
       <div class="mega-prov"><span class="mega-code">${g.code}</span>${g.province}</div>
       <div class="mega-cities">
-        ${g.cities.map(([n, h]) => `<a href="${h}"><span class="dot"></span>${n}</a>`).join("")}
+        ${g.cities.map((n) => `<span><span class="dot"></span>${n}</span>`).join("")}
       </div>
     </div>`).join("");
 
@@ -67,7 +57,6 @@
         <div class="mega">
           <div class="mega-head">
             <div><h4>Service Areas Across Canada</h4><p>Remote tax services from coast to coast</p></div>
-            <a class="mega-all" href="${P}service-areas.html">View All →</a>
           </div>
           <div class="mega-grid">${megaCols}</div>
           <div class="mega-foot">Serving 11+ communities across 5 provinces</div>
@@ -97,7 +86,14 @@
     <a href="${P}services.html">Services</a>
     <a href="${P}blog.html">Insights</a>
     <a href="${P}team.html">Team</a>
-    <a href="${P}service-areas.html">Service Areas</a>
+    <button type="button" class="mm-areas-btn" aria-expanded="false">Service Areas</button>
+    <div class="mm-areas" hidden>
+      ${areas.map((g) => `
+        <div class="mm-area">
+          <div class="mm-area-prov"><span class="mega-code">${g.code}</span>${g.province}</div>
+          <div class="mm-area-cities">${g.cities.map((n) => `<span>${n}</span>`).join("")}</div>
+        </div>`).join("")}
+    </div>
     <a href="${P || "index.html"}#contact">Contact</a>
     <div class="mm-foot">
       <a class="tel-inline" href="tel:+14379256546" aria-label="Call us at (437) 925-6546">${PHONE_SVG}<span>+1 (437) 925-6546</span></a>
@@ -129,7 +125,6 @@
           <ul>
             <li><a href="${P || "index.html"}">Home</a></li>
             <li><a href="${P}services.html">Services</a></li>
-            <li><a href="${P}service-areas.html">Service Areas</a></li>
             <li><a href="${P}team.html">Our Team</a></li>
             <li><a href="${P}blog.html">Insights</a></li>
             <li><a href="${P || "index.html"}#contact">Contact</a></li>
@@ -149,18 +144,17 @@
           <ul>
             <li><a href="mailto:info@shelevate.ca">info@shelevate.ca</a></li>
             <li><a class="tel-inline" href="tel:+14379256546" aria-label="Call us at (437) 925-6546">${PHONE_SVG}<span>+1 (437) 925-6546</span></a></li>
-            <li><a class="tel-inline" href="tel:+19029198696" aria-label="Call our Atlantic line at (902) 919-8696">${PHONE_SVG}<span>+1 (902) 919-8696</span></a></li>
             <li>36 Lee Centre Dr, Scarborough ON M1H 3K2</li>
           </ul>
         </div>
       </div>
       <div class="footer-areas">
-        <div class="fa-head"><h4>Service Areas Across Canada</h4><a href="${P}service-areas.html">View All →</a></div>
+        <div class="fa-head"><h4>Service Areas Across Canada</h4></div>
         <div class="fa-groups">
           ${footerAreas.map((g) => `
             <div class="fa-group">
               <div class="fg-region">${g.province}</div>
-              <div class="fg-links">${g.cities.map((c) => `<a href="${P}service-areas.html">${c[0]}</a>`).join("")}</div>
+              <div class="fg-links">${g.cities.map((c) => `<span>${c[0]}</span>`).join("")}</div>
             </div>`).join("")}
         </div>
       </div>
@@ -244,7 +238,7 @@
     let currentTel = "";
 
     const digitsOf = (tel) => tel.replace(/[^0-9]/g, "");
-    const qrFor = (tel) => P + (digitsOf(tel).endsWith("9029198696") ? "images/call-qr-902.svg" : "images/call-qr-437.svg");
+    const qrFor = () => P + "images/call-qr-437.svg";
     const pretty = (tel) => {
       const d = digitsOf(tel).replace(/^1/, "");
       return d.length === 10 ? `+1 (${d.slice(0, 3)}) ${d.slice(3, 6)}-${d.slice(6)}` : tel;
@@ -253,7 +247,7 @@
     const onKey = (e) => { if (e.key === "Escape") close(); };
     function open(tel) {
       currentTel = tel;
-      qrImg.src = qrFor(tel);
+      qrImg.src = qrFor();
       numEl.href = "tel:" + tel;
       numEl.textContent = pretty(tel);
       copyBtn.classList.remove("copied");

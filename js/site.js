@@ -61,6 +61,16 @@
     mobileMenu.querySelectorAll("a").forEach((a) =>
       a.addEventListener("click", () => toggle(false))
     );
+    const areasBtn = mobileMenu.querySelector(".mm-areas-btn");
+    const areasList = mobileMenu.querySelector(".mm-areas");
+    if (areasBtn && areasList) {
+      areasBtn.addEventListener("click", () => {
+        const open = areasList.hasAttribute("hidden");
+        areasList.toggleAttribute("hidden", !open);
+        areasList.classList.toggle("is-open", open);
+        areasBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+    }
   }
 
   // Service Areas mega-menu dropdown
