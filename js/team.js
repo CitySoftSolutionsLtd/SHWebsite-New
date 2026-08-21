@@ -81,7 +81,7 @@
   function cardHTML(r, i) {
     return `
       <div class="rep-card" data-reveal data-reveal-delay="${i % 3}" data-slug="${r.slug}">
-        <div class="rep-photo"><img src="${r.photo}" alt="${r.name}" loading="lazy" /></div>
+        <div class="rep-photo"><img src="${r.photo}" alt="${r.name}" loading="lazy" decoding="async" width="400" height="400" /></div>
         <h3>${r.name}</h3>
         <div class="rep-title">${r.title}</div>
         <div class="rep-loc">${r.location}</div>

@@ -53,6 +53,33 @@ Allow: /
 User-agent: cohere-ai
 Allow: /
 
+User-agent: YouBot
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+User-agent: MistralAI-User
+Allow: /
+
+User-agent: xAI-Grok
+Allow: /
+
+User-agent: Google-CloudVertexBot
+Allow: /
+
+User-agent: AI2Bot
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: ImagesiftBot
+Allow: /
+
+User-agent: TikTokSpider
+Allow: /
+
 Sitemap: https://shelevate.ca/sitemap.xml
 # Machine-readable firm facts for AI assistants:
 # https://shelevate.ca/llms.txt

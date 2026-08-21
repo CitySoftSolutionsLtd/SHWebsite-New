@@ -99,7 +99,10 @@
   if (featWrap) {
     featWrap.innerHTML = `
       <a class="blog-feature" href="blog-${feat.slug}.html">
-        <div class="bf-media"><img src="images/card2.jpg" alt="${feat.title}" /></div>
+        <div class="bf-media"><picture>
+          <source type="image/webp" srcset="images/blog-t1-640.webp 640w, images/blog-t1-1024.webp 1024w, images/blog-t1.webp 1680w" sizes="(max-width: 900px) 100vw, 50vw" />
+          <img src="images/blog-t1-1024.jpg" alt="${feat.title}" decoding="async" loading="lazy" srcset="images/blog-t1-640.jpg 640w, images/blog-t1-1024.jpg 1024w, images/blog-t1.jpg 1680w" sizes="(max-width: 900px) 100vw, 50vw" width="1680" height="938" />
+        </picture></div>
         <div class="bf-body">
           <div class="cat">${feat.category} · ${feat.readTime}</div>
           <h2>${feat.title}</h2>
