@@ -65,7 +65,12 @@
 
 <article>
 <section class="page-hero" data-screen-label="Article Hero">
-  <div class="page-hero-bg is-gradient"><picture><source type="image/webp" srcset="images/bg-hero-04-640.webp 640w, images/bg-hero-04-1024.webp 1024w, images/bg-hero-04.webp 1680w" sizes="100vw" /><img src="images/bg-hero-04.jpg" alt="" decoding="async" srcset="images/bg-hero-04-640.jpg 640w, images/bg-hero-04-1024.jpg 1024w, images/bg-hero-04.jpg 1680w" sizes="100vw" /></picture></div>
+  <div class="page-hero-bg"><picture>
+      <source type="image/webp" media="(max-width: 760px)" srcset="images/blog-gst-640.webp 640w, images/blog-gst-mobile.webp 1080w" sizes="100vw" />
+      <source media="(max-width: 760px)" srcset="images/blog-gst-640.jpg 640w, images/blog-gst-mobile.jpg 1080w" sizes="100vw" />
+      <source type="image/webp" srcset="images/blog-gst-1024.webp 1024w, images/blog-gst.webp 1680w" sizes="100vw" />
+      <img src="images/blog-gst.jpg" alt="GST/HST registration and filing guide" decoding="async" srcset="images/blog-gst-1024.jpg 1024w, images/blog-gst.jpg 1680w" sizes="100vw" width="1680" height="938" />
+    </picture></div>
   <div class="page-hero-light"></div>
   <div class="page-hero-inner wrap">
     <nav class="breadcrumb" aria-label="Breadcrumb">

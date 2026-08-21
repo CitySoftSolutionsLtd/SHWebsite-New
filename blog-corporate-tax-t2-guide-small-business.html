@@ -65,7 +65,12 @@
 
 <article>
 <section class="page-hero" data-screen-label="Article Hero">
-  <div class="page-hero-bg is-gradient"><picture><source type="image/webp" srcset="images/bg-hero-06-640.webp 640w, images/bg-hero-06-1024.webp 1024w, images/bg-hero-06.webp 1680w" sizes="100vw" /><img src="images/bg-hero-06.jpg" alt="" decoding="async" srcset="images/bg-hero-06-640.jpg 640w, images/bg-hero-06-1024.jpg 1024w, images/bg-hero-06.jpg 1680w" sizes="100vw" /></picture></div>
+  <div class="page-hero-bg"><picture>
+      <source type="image/webp" media="(max-width: 760px)" srcset="images/blog-t2-640.webp 640w, images/blog-t2-mobile.webp 1080w" sizes="100vw" />
+      <source media="(max-width: 760px)" srcset="images/blog-t2-640.jpg 640w, images/blog-t2-mobile.jpg 1080w" sizes="100vw" />
+      <source type="image/webp" srcset="images/blog-t2-1024.webp 1024w, images/blog-t2.webp 1680w" sizes="100vw" />
+      <img src="images/blog-t2.jpg" alt="T2 corporate tax guide for small businesses" decoding="async" srcset="images/blog-t2-1024.jpg 1024w, images/blog-t2.jpg 1680w" sizes="100vw" width="1680" height="938" />
+    </picture></div>
   <div class="page-hero-light"></div>
   <div class="page-hero-inner wrap">
     <nav class="breadcrumb" aria-label="Breadcrumb">
