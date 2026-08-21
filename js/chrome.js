@@ -42,8 +42,8 @@
   header.innerHTML = `
     <a href="${P || "index.html"}" class="nav-logo" aria-label="SH Elevate Financial Group">
       <span class="logo-corner">
-        <img class="logo-corner-bg" src="${P}images/curve.png" alt="" aria-hidden="true" />
-        <img class="logo-corner-mark" src="${P}images/logo-white.png" alt="SH Elevate Financial Group" />
+        <img class="logo-corner-bg" src="${P}images/curve.png" alt="" aria-hidden="true" width="640" height="640" decoding="async" />
+        <img class="logo-corner-mark" src="${P}images/logo-white.png" alt="SH Elevate Financial Group" width="180" height="115" decoding="async" />
       </span>
     </a>
     <nav class="nav-links">
