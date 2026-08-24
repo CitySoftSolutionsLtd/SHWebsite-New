@@ -954,6 +954,10 @@ em.gold, .gold-text { color: var(--gold-light); font-style: normal; }
 /* =====================================================================
    TEAM
    ===================================================================== */
+.team-head { text-align: center; margin-inline: auto; }
+.team-head .eyebrow { justify-content: center; }
+.team-grid:has(.rep-card:nth-child(4):last-child) { grid-template-columns: repeat(2, 1fr); max-width: 880px; margin-inline: auto; }
+.rep-photo img, .rm-photo img { object-position: 50% 18%; }
 .team-tools { display: flex; flex-direction: column; gap: 22px; align-items: center; margin-bottom: clamp(40px, 5vw, 64px); }
 .team-search { position: relative; width: min(460px, 100%); }
 .team-search input { width: 100%; padding: 15px 18px 15px 46px; background: var(--surface-2); border: 1px solid var(--line-soft); border-radius: 100px; color: var(--ivory); font-family: var(--sans); font-size: 0.95rem; transition: 0.3s; }

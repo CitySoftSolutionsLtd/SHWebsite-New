@@ -52,7 +52,7 @@
   function cardHTML(r, i) {
     const years = (r.experience || "").replace(/\D.*$/, "");
     return `
-      <div class="rep-card" data-reveal data-reveal-delay="${i % 3}" data-slug="${r.slug}">
+      <div class="rep-card" id="${r.slug}" data-reveal data-reveal-delay="${i % 3}" data-slug="${r.slug}">
         <div class="rep-photo">${photoHTML(r)}</div>
         <h3>${r.name}</h3>
         <div class="rep-title">${r.title || ""}</div>
@@ -107,7 +107,10 @@
     modal.querySelector(".rm-bio").textContent = r.bio || "";
     modal.querySelector(".rm-specs").innerHTML = (r.specializations || []).map((s) => `<span>${s}</span>`).join("");
     modal.querySelector(".rm-langs").textContent = (r.languages || []).join(" · ");
-    modal.querySelector(".rm-exp").textContent = r.experience || "—";
+    const expRow = modal.querySelector(".rm-exp-row");
+    const exp = (r.experience || "").trim();
+    if (expRow) expRow.hidden = !exp;
+    modal.querySelector(".rm-exp").textContent = exp || "—";
     const em = modal.querySelector(".rm-email");
     em.href = "mailto:" + (r.email || "info@shelevate.ca");
     em.textContent = r.email || "info@shelevate.ca";
