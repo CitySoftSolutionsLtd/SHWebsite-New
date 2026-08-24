@@ -25,7 +25,9 @@
 
   const photoHTML = (r) => {
     if (r.photo && !/^https:\/\/images\.unsplash\.com/i.test(r.photo) && !/^REPLACE_/i.test(r.photo)) {
-      return `<img src="${r.photo}" alt="${r.name}" loading="lazy" decoding="async" width="400" height="400" />`;
+      const webp = r.photo.replace(/\.(jpe?g|png)$/i, ".webp");
+      const webpTag = /\.webp$/i.test(r.photo) ? "" : `<source type="image/webp" srcset="${webp}" />`;
+      return `<picture>${webpTag}<img src="${r.photo}" alt="${r.name}" loading="lazy" decoding="async" width="400" height="400" /></picture>`;
     }
     return `<span class="rep-initials" aria-hidden="true">${initials(r.name)}</span>`;
   };
