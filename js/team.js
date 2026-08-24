@@ -1,8 +1,4 @@
-/* =====================================================================
-   SH ELEVATE — Team / booking page
-   Renders only published real staff from bookings-config.js.
-   Book buttons open the Microsoft Bookings gate (js/bookings.js).
-   ===================================================================== */
+/* Team cards from bookings-config.js. Book buttons open js/bookings.js. */
 (function () {
   "use strict";
   const grid = document.getElementById("team-grid");
