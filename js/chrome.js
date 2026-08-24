@@ -9,6 +9,9 @@
 
   const active = document.body.getAttribute("data-active") || "";
   const P = document.body.getAttribute("data-prefix") || ""; // "" at root
+  // Dev client portal. Swap this URL when production is live. Root (not /login) until
+  // the portal's client-side routes are confirmed on the deployed host.
+  const CLIENT_PORTAL_URL = "https://victorious-sky-0924e120f.7.azurestaticapps.net/";
 
   // Shared handset glyph — prefixes every phone number so it reads as tap-to-call.
   const PHONE_SVG = '<svg class="tel-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><path d="M6.6 10.8a12 12 0 0 0 5.6 5.6l1.9-1.9a1 1 0 0 1 1-.24 9.6 9.6 0 0 0 3 .48 1 1 0 0 1 1 1V19a1 1 0 0 1-1 1A15.5 15.5 0 0 1 4 5a1 1 0 0 1 1-1h2.3a1 1 0 0 1 1 1 9.6 9.6 0 0 0 .48 3 1 1 0 0 1-.24 1z"/></svg>';
@@ -65,6 +68,7 @@
     </nav>
     <div class="nav-right">
       <a class="nav-phone" href="tel:+14379256546" aria-label="Call us at (437) 925-6546">${PHONE_SVG}<span>437·925·6546</span></a>
+      <a class="nav-login" href="${CLIENT_PORTAL_URL}" target="_blank" rel="noopener noreferrer">Client login</a>
       <a class="btn btn-gold nav-cta" href="${P}team.html" data-magnetic>Book Appointment</a>
       <button class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>`;
@@ -86,6 +90,7 @@
     <a href="${P}services.html">Services</a>
     <a href="${P}blog.html">Insights</a>
     <a href="${P}team.html">Team</a>
+    <a href="${CLIENT_PORTAL_URL}" target="_blank" rel="noopener noreferrer">Client login</a>
     <button type="button" class="mm-areas-btn" aria-expanded="false">Service Areas</button>
     <div class="mm-areas" hidden>
       ${areas.map((g) => `
