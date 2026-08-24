@@ -71,7 +71,7 @@
 
 /* ---------- Dark "islands": light text + glass surfaces on dark/photo areas ---------- */
 .nav, .mobile-menu, .hero, .film-hero, .film, .page-hero, .stats, .contact,
-.cta-band, .footer, .mega, .blog-reader, .rep-modal, .stat-badge, .svc-card,
+.cta-band, .footer, .mega, .blog-reader, .rep-modal, .book-modal, .stat-badge, .svc-card,
 .film-loader, .page-curtain {
   --ivory: #f3f6fb;
   --ivory-dim: rgba(243, 246, 251, 0.76);
@@ -971,6 +971,7 @@ em.gold, .gold-text { color: var(--gold-light); font-style: normal; }
 .rep-card:hover::before { height: 3px; }
 .rep-photo { width: 104px; height: 104px; margin: 0 auto 22px; border-radius: 50%; overflow: hidden; border: 2px solid var(--line); }
 .rep-photo img { width: 100%; height: 100%; object-fit: cover; }
+.rep-initials { display: grid; place-items: center; width: 100%; height: 100%; background: var(--navy-800); color: var(--ivory); font-family: var(--serif); font-size: 2rem; letter-spacing: 0.04em; }
 .rep-card h3 { font-size: 1.4rem; margin-bottom: 4px; }
 .rep-title { color: var(--gold-light); font-size: 0.9rem; font-weight: 500; }
 .rep-loc { color: var(--ivory-faint); font-size: 0.82rem; margin-top: 4px; }
@@ -1031,6 +1032,25 @@ em.gold, .gold-text { color: var(--gold-light); font-style: normal; }
 .rm-info .ri a:hover { color: var(--gold-light); }
 .rm-cta { margin-top: 28px; }
 @media (max-width: 560px) { .rm-info { grid-template-columns: 1fr; } .rm-top { flex-direction: column; text-align: center; } .rep-modal { place-items: start center; } .rm-panel { max-height: none; overflow-y: visible; } }
+
+.book-panel { max-width: 760px; margin: 0 auto; text-align: center; padding: clamp(28px, 4vw, 48px); background: var(--surface); border: 1px solid var(--line-soft); border-radius: 16px; }
+.book-panel .h-section { margin: 16px 0 18px; }
+.book-panel .lede { margin: 0 auto 28px; }
+.book-panel-actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+
+.book-modal { position: fixed; inset: 0; z-index: 1100; display: grid; place-items: center; padding: clamp(12px, 3vw, 36px); opacity: 0; visibility: hidden; transition: opacity 0.35s var(--ease), visibility 0.35s; }
+.book-modal.open { opacity: 1; visibility: visible; }
+.book-modal-backdrop { position: absolute; inset: 0; background: rgba(4, 9, 20, 0.78); backdrop-filter: blur(10px); }
+.book-modal-panel { position: relative; z-index: 2; width: min(920px, 100%); max-height: 92vh; overflow: hidden; display: flex; flex-direction: column; background: linear-gradient(160deg, var(--navy-850), var(--navy-900)); border: 1px solid var(--line); border-radius: 16px; padding: clamp(22px, 3vw, 36px); box-shadow: 0 50px 100px -30px rgba(0,0,0,0.8); }
+.book-modal-panel h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 12px; padding-right: 48px; }
+.book-modal-panel .lede { margin-bottom: 22px; }
+.book-turnstile { min-height: 0; margin: 8px 0 14px; }
+.book-human { display: flex; align-items: flex-start; gap: 10px; text-align: left; color: var(--ivory-dim); font-size: 0.95rem; margin: 0 0 16px; cursor: pointer; }
+.book-human input { margin-top: 4px; accent-color: var(--gold); width: 16px; height: 16px; flex-shrink: 0; }
+.book-gate-msg { color: var(--gold-light); min-height: 1.4em; margin: 0 0 14px; font-size: 0.92rem; }
+.book-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+#book-frame-wrap { flex: 1; min-height: min(70vh, 720px); border-radius: 10px; overflow: hidden; background: #fff; }
+#book-frame { width: 100%; height: min(70vh, 720px); border: 0; display: block; background: #fff; }
 
 /* =====================================================================
    BLOG
