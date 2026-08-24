@@ -53,7 +53,7 @@ window.SH_BOOKINGS = {
       name: "Stevens Sabu",
       title: "Co-Founder and Director",
       specializations: ["Corporate Tax Services", "Tax Planning"],
-      photo: "",
+      photo: "images/team/stevens-sabu.jpg",
       bio: "Stevens Sabu serves as Co-Founder and Director at SH Elevate Financial Group, where he is dedicated to shaping the firm's vision, driving growth, and delivering trusted financial guidance. He works with individuals, families, and business owners on financial planning, taxation, and long-term wealth strategies. Known for his professional approach and attention to detail, Stevens focuses on clear guidance and strategies aligned with each client's goals.",
       email: "info@shelevate.ca",
       phone: "+1 (437) 925-6546",
