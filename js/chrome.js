@@ -116,8 +116,7 @@
       <div class="footer-top">
         <div class="footer-brand">
           <img class="logo-img" src="${P}images/logo-white.png" alt="SH Elevate Financial Group" width="220" height="141" />
-          <p>A trusted Canadian tax and accounting firm built on integrity, accuracy, and client-centered service.</p>
-          <!-- Social links intentionally omitted until real profile URLs are provided. -->
+          <p>Tax and accounting in Scarborough, and remotely across Canada.</p>
           <a class="footer-cta-link" href="${P}team.html">Book a free consultation →</a>
         </div>
         <div class="footer-col">

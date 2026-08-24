@@ -1,35 +1,7 @@
-/* =====================================================================
-   SH ELEVATE — Microsoft Bookings + staff (fill in with the client)
-   Public values only. Never put an Azure client secret in this file.
-   ===================================================================== */
+/* Public booking + staff list. Empty URLs stay off until a real calendar link is added. */
 window.SH_BOOKINGS = {
-  /* Microsoft Bookings → Booking page → copy the public link.
-     Typical shapes:
-       https://outlook.office365.com/owa/calendar/NAME@shelevate.ca/bookings/
-       https://outlook.office365.com/book/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/
-       https://outlook.office.com/book/YourBusiness/ */
-  pageUrl: "REPLACE_MICROSOFT_BOOKINGS_PAGE_URL",
-
-  /* Bookings business GUID — Bookings admin / Graph (optional, future API). */
-  businessId: "REPLACE_BOOKINGS_BUSINESS_ID",
-
-  /* Azure AD app used only if a server-side Graph booking API is added later.
-     Do not put AZURE_CLIENT_SECRET in the website. */
-  azureTenantId: "REPLACE_AZURE_TENANT_ID",
-  azureClientId: "REPLACE_AZURE_CLIENT_ID",
-
-  /* Cloudflare Turnstile site key (Dashboard → Turnstile).
-     Leave the REPLACE_ value until the client creates a widget. */
-  turnstileSiteKey: "REPLACE_TURNSTILE_SITE_KEY",
-
-  /* Cap how often one browser can open the calendar (stops scripted floods). */
+  pageUrl: "",
   maxOpensPerHour: 6,
-
-  /* Real people. published: true when the name is real (photos optional).
-     Staff-specific URL: Bookings → Staff → booking link for that person.
-     Until a Bookings URL is filled, Book falls back to the firm calendar
-     (or the call/email message if that URL is still a placeholder).
-     Drop headshots at images/team/<slug>.webp when the files are on disk. */
   staff: [
     {
       published: true,
@@ -44,8 +16,7 @@ window.SH_BOOKINGS = {
       experience: "",
       location: "Scarborough, ON",
       languages: ["English"],
-      bookingsUrl: "REPLACE_HANNA_JOICE_BOOKINGS_URL",
-      bookingsStaffId: "REPLACE_HANNA_JOICE_ID",
+      bookingsUrl: "",
     },
     {
       published: true,
@@ -60,8 +31,7 @@ window.SH_BOOKINGS = {
       experience: "",
       location: "Scarborough, ON",
       languages: ["English"],
-      bookingsUrl: "REPLACE_STEVENS_SABU_BOOKINGS_URL",
-      bookingsStaffId: "REPLACE_STEVENS_SABU_ID",
+      bookingsUrl: "",
     },
     {
       published: true,
@@ -76,8 +46,7 @@ window.SH_BOOKINGS = {
       experience: "",
       location: "Scarborough, ON",
       languages: ["English"],
-      bookingsUrl: "REPLACE_MEHAKDEEP_KAUR_BOOKINGS_URL",
-      bookingsStaffId: "REPLACE_MEHAKDEEP_KAUR_ID",
+      bookingsUrl: "",
     },
     {
       published: true,
@@ -92,8 +61,7 @@ window.SH_BOOKINGS = {
       experience: "",
       location: "Scarborough, ON",
       languages: ["English"],
-      bookingsUrl: "REPLACE_GINIL_JOSE_BOOKINGS_URL",
-      bookingsStaffId: "REPLACE_GINIL_JOSE_ID",
+      bookingsUrl: "",
     },
   ],
 };

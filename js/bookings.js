@@ -1,8 +1,4 @@
-/* =====================================================================
-   SH ELEVATE — Microsoft Bookings embed + bot gate
-   Calendar iframe is injected only after a human pass. Appointments are
-   created inside Microsoft Bookings, so they land on the client's account.
-   ===================================================================== */
+/* Booking calendar embed. The iframe loads only after a short check. */
 (function () {
   "use strict";
 
@@ -161,17 +157,17 @@
   }
 
   function continueToCalendar() {
-    if (honeypotFilled()) return; // bots that fill hidden fields
+    if (honeypotFilled()) return;
     if (Date.now() - openedAt < MIN_DWELL_MS) {
       showMsg("Please wait a moment, then try again.");
       return;
     }
     if (!underCap()) {
-      showMsg("Too many booking attempts from this browser. Call +1 (437) 925-6546 or try again later.");
+      showMsg("Please try again later, or call +1 (437) 925-6546.");
       return;
     }
     if (turnstileReady && window.turnstile && !turnstileToken) {
-      showMsg("Please confirm you are not a robot.");
+      showMsg("Please confirm this booking.");
       return;
     }
     const human = document.getElementById("book-human");
