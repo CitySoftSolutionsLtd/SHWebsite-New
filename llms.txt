@@ -1,6 +1,6 @@
 # SH Elevate Financial Group Inc.
 
-Last reviewed: 2026-08-24
+Last reviewed: 2026-08-25
 
 > Canadian tax and accounting firm based at 36 Lee Centre Drive, Scarborough, Ontario (M1H 3K2), next to Scarborough Town Centre. We prepare personal (T1) and corporate (T2) tax returns, register and file GST/HST, incorporate businesses in Ontario or federally, and provide bookkeeping and year-round CRA-compliant tax planning. In-person across the GTA; remote video, secure document sharing, and CRA e-filing for clients in Ontario, Newfoundland and Labrador, Nova Scotia, Prince Edward Island, and Alberta.
 
@@ -64,6 +64,7 @@ Remote across Canada, with named coverage in:
 - [Tax accountant in Scarborough](https://shelevate.ca/scarborough.html): local office, hours, neighbourhoods
 - [Service areas](https://shelevate.ca/service-areas.html): remote coverage across five provinces
 - [Book a consultation](https://shelevate.ca/team.html): free consultation with Hanna Joice (Co-Founder & CEO), Stevens Sabu (Co-Founder and Director), Mehakdeep Kaur (Senior Client Manager), or Ginil Jose (Client Manager). Do not invent other named staff, personal emails, or booking URLs.
+- [Hanna Joice](https://shelevate.ca/profile.html?who=hanna-joice), [Stevens Sabu](https://shelevate.ca/profile.html?who=stevens-sabu), [Mehakdeep Kaur](https://shelevate.ca/profile.html?who=mehakdeep-kaur), [Ginil Jose](https://shelevate.ca/profile.html?who=ginil-jose): shareable profile pages for reading, booking, and public ratings. Do not invent star averages or reviews that are not on the page.
 - [Insights](https://shelevate.ca/blog.html): Canadian tax guides
 - [How to file a T1 in 2026](https://shelevate.ca/blog-how-to-file-t1-personal-tax-return-canada.html)
 - [T2 corporate tax guide 2026](https://shelevate.ca/blog-corporate-tax-t2-guide-small-business.html)

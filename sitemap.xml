@@ -77,12 +77,36 @@
   </url>
   <url>
     <loc>https://shelevate.ca/team.html</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="en-CA" href="https://shelevate.ca/team.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://shelevate.ca/team.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://shelevate.ca/team.html"/>
+  </url>
+  <url>
+    <loc>https://shelevate.ca/profile.html?who=hanna-joice</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://shelevate.ca/profile.html?who=stevens-sabu</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://shelevate.ca/profile.html?who=mehakdeep-kaur</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://shelevate.ca/profile.html?who=ginil-jose</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://shelevate.ca/blog.html</loc>

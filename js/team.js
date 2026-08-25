@@ -60,7 +60,7 @@
           <div class="rm"><div class="v">${(r.languages || []).length || "—"}</div><div class="k">Languages</div></div></div>` : ""}
         <div class="rep-actions">
           <a class="btn btn-gold rep-book" href="#book" data-book="${r.slug}">Book Appointment <span class="btn-arrow">→</span></a>
-          ${r.bio ? `<button type="button" class="rep-profile-link" data-profile="${r.slug}">View full profile</button>` : ""}
+          ${r.bio ? `<a class="rep-profile-link" href="profile.html?who=${encodeURIComponent(r.slug)}">View full profile</a>` : ""}
         </div>
       </div>`;
   }
@@ -75,67 +75,10 @@
     });
     grid.innerHTML = list.length ? list.map(cardHTML).join("") : `<div class="rep-empty">No team members match your search.</div>`;
     grid.querySelectorAll("[data-reveal]").forEach((el) => el.classList.add("in"));
-    grid.querySelectorAll("[data-profile]").forEach((b) =>
-      b.addEventListener("click", (e) => { e.preventDefault(); openModal(b.getAttribute("data-profile")); })
-    );
   }
 
   const input = document.getElementById("team-search-input");
   if (input) input.addEventListener("input", (e) => { search = e.target.value; render(); });
-
-  const modal = document.getElementById("rep-modal");
-  function openModal(slug) {
-    if (!modal) return;
-    const r = reps.find((x) => x.slug === slug);
-    if (!r) return;
-    const img = modal.querySelector(".rm-photo img");
-    const ini = modal.querySelector(".rm-photo .rep-initials");
-    if (r.photo && img) {
-      img.hidden = false;
-      img.src = r.photo;
-      img.alt = r.name;
-      if (ini) ini.hidden = true;
-    } else if (img) {
-      img.hidden = true;
-      if (ini) { ini.hidden = false; ini.textContent = initials(r.name); }
-    }
-    modal.querySelector(".rm-name").textContent = r.name;
-    modal.querySelector(".rm-title").textContent = r.title || "";
-    modal.querySelector(".rm-loc").textContent = r.location || "";
-    modal.querySelector(".rm-bio").textContent = r.bio || "";
-    modal.querySelector(".rm-specs").innerHTML = (r.specializations || []).map((s) => `<span>${s}</span>`).join("");
-    modal.querySelector(".rm-langs").textContent = (r.languages || []).join(" · ");
-    const expRow = modal.querySelector(".rm-exp-row");
-    const exp = (r.experience || "").trim();
-    if (expRow) expRow.hidden = !exp;
-    modal.querySelector(".rm-exp").textContent = exp || "—";
-    const em = modal.querySelector(".rm-email");
-    em.href = "mailto:" + (r.email || "info@shelevate.ca");
-    em.textContent = r.email || "info@shelevate.ca";
-    const ph = modal.querySelector(".rm-phone");
-    const tel = (r.phone || "+1 (437) 925-6546");
-    ph.href = "tel:" + tel.replace(/[^+\d]/g, "");
-    ph.textContent = tel;
-    const bookBtn = modal.querySelector(".rm-cta a");
-    bookBtn.setAttribute("href", "#book");
-    bookBtn.setAttribute("data-book", r.slug);
-    bookBtn.removeAttribute("target");
-    bookBtn.innerHTML = `Book with ${r.name.split(" ")[0]} <span class="btn-arrow">→</span>`;
-    modal.classList.add("open");
-    document.body.style.overflow = "hidden";
-    if (window.__lenis) window.__lenis.stop();
-  }
-  function closeModal() {
-    if (!modal) return;
-    modal.classList.remove("open");
-    document.body.style.overflow = "";
-    if (window.__lenis) window.__lenis.start();
-  }
-  if (modal) {
-    modal.querySelector(".rm-close").addEventListener("click", closeModal);
-    modal.querySelector(".rm-backdrop").addEventListener("click", closeModal);
-    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
-  }
 
   render();
 })();

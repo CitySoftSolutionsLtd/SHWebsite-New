@@ -1,7 +1,10 @@
-/* Public booking + staff list. Empty URLs stay off until a real calendar link is added. */
+/* Public booking + staff list. Empty URLs stay off until a real calendar link is added.
+   Add or remove people here — shareable pages (profile.html?who=<slug>) and ratings follow the slug.
+   Ratings are stored in the client-portal database, keyed by this slug, not by a portal login. */
 window.SH_BOOKINGS = {
   pageUrl: "",
   maxOpensPerHour: 6,
+  ratingsApi: "https://victorious-sky-0924e120f.7.azurestaticapps.net/api/public/staff",
   staff: [
     {
       published: true,
