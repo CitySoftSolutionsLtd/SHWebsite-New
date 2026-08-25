@@ -147,9 +147,9 @@
           <span class="rate-label">Comment <span class="rate-optional">(optional)</span></span>
           <textarea id="rate-comment" name="comment" maxlength="600" rows="4"></textarea>
         </label>
-        <p class="rate-status" id="rate-status" role="status"></p>
         <button type="submit" class="btn btn-gold" id="rate-submit">Submit rating <span class="btn-arrow">→</span></button>
-      </form>`;
+      </form>
+      <p class="rate-status" id="rate-status" role="status"></p>`;
 
     let selected = 0;
     const stars = wrap.querySelector("#rate-stars");
