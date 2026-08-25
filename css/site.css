@@ -956,7 +956,9 @@ em.gold, .gold-text { color: var(--gold-light); font-style: normal; }
    ===================================================================== */
 .team-head { text-align: center; margin-inline: auto; }
 .team-head .eyebrow { justify-content: center; }
-.team-grid:has(.rep-card:nth-child(4):last-child) { grid-template-columns: repeat(2, 1fr); max-width: 880px; margin-inline: auto; }
+@media (min-width: 761px) {
+  .team-grid:has(.rep-card:nth-child(4):last-child) { grid-template-columns: repeat(2, 1fr); max-width: 880px; margin-inline: auto; }
+}
 .rep-photo img, .rm-photo img { object-position: 50% 18%; }
 .team-tools { display: flex; flex-direction: column; gap: 22px; align-items: center; margin-bottom: clamp(40px, 5vw, 64px); }
 .team-search { position: relative; width: min(460px, 100%); }
@@ -1162,6 +1164,21 @@ em.gold, .gold-text { color: var(--gold-light); font-style: normal; }
   .steps-row { grid-template-columns: 1fr 1fr; gap: 32px; }
   .areas-intro-grid { grid-template-columns: 1fr 1fr; }
   .blog-feature .bf-media { min-height: 260px; }
+}
+@media (max-width: 760px) {
+  .team-grid,
+  .team-grid:has(.rep-card:nth-child(4):last-child) {
+    grid-template-columns: 1fr;
+    max-width: 440px;
+    margin-inline: auto;
+  }
+  .rep-card { padding: 26px 22px 24px; }
+  .rep-card h3 { font-size: 1.28rem; }
+  .rep-title { max-width: 28ch; margin-inline: auto; line-height: 1.4; }
+  .rep-specs { margin: 16px 0 8px; }
+  .rep-actions { margin-top: 18px; }
+  .team-filters { gap: 8px; padding-inline: 4px; }
+  .team-chip { padding: 8px 14px; }
 }
 @media (max-width: 680px) {
   .tri-grid, .team-grid, .blog-grid, .related-grid, .city-grid, .benefit-grid, .dual-list { grid-template-columns: 1fr; }
@@ -1441,8 +1458,13 @@ a[href^="tel:"]:focus:not(:focus-visible) { outline: none; }
 .rate-review-stars { color: var(--gold-light); letter-spacing: 0.08em; margin-bottom: 8px; }
 .rate-review p { color: var(--ivory-dim); line-height: 1.6; margin: 0 0 8px; }
 .rate-review footer { color: var(--ivory-faint); font-size: 0.86rem; }
-@media (max-width: 640px) {
+@media (max-width: 760px) {
+  .profile-card, .rate-card, .profile-missing { padding: 24px 20px; }
   .profile-top { flex-direction: column; text-align: center; }
-  .profile-cta, .profile-dir-grid { grid-template-columns: 1fr; }
+  .profile-photo { width: 120px; height: 120px; }
+  .profile-dir-grid { grid-template-columns: 1fr; max-width: 440px; margin-inline: auto; }
   .profile-cta { flex-direction: column; }
+  .profile-cta .btn { width: 100%; justify-content: center; }
+  .rm-info { grid-template-columns: 1fr; }
+  .rm-specs { justify-content: center; }
 }
