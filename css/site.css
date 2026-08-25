@@ -1043,6 +1043,18 @@ em.gold, .gold-text { color: var(--gold-light); font-style: normal; }
 .book-panel .h-section { margin: 16px 0 18px; }
 .book-panel .lede { margin: 0 auto 28px; }
 .book-panel-actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+/* Team page: don't stack two full section paddings between the book panel and the roster. */
+.section.book-cta {
+  padding-top: 0;
+  padding-bottom: clamp(24px, 3.2vw, 40px);
+}
+.section.team-roster {
+  padding-top: clamp(28px, 4vw, 56px);
+}
+@media (max-width: 760px) {
+  .section.book-cta { padding-bottom: 20px; }
+  .section.team-roster { padding-top: 24px; }
+}
 
 .book-modal { position: fixed; inset: 0; z-index: 1100; display: grid; place-items: center; padding: clamp(12px, 3vw, 36px); opacity: 0; visibility: hidden; transition: opacity 0.35s var(--ease), visibility 0.35s; }
 .book-modal.open { opacity: 1; visibility: visible; }
