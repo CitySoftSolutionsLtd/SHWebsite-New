@@ -67,3 +67,16 @@ Additional verification sources:
 - Blog JavaScript syntax and whitespace checks passed.
 - Browser checked the corrected northern article and six blog cards.
 - Fixed date-only blog-card formatting so Canadian time zones do not display the previous calendar day.
+
+
+## Client website corrections — 2026-09-24
+
+Implemented the 13 numbered items in `Website Related Corrections.docx`: homepage positioning; T1 heading spacing and introduction; removal of the included-filing side panel; single deduction bullets; newcomer and student copy; call/portal tax-filing CTA; footer strapline; nine provinces excluding Quebec; financial-planning booking copy; booking steps/meeting-link confirmation; Stevens’s Personal Tax Services specialization; services introduction. Related FAQ/schema/metadata and shared booking language were aligned. Portal CTAs reuse the existing configurable destination in chrome.js.
+
+Two factual refinements preserve CRA accuracy rather than copying the suggested wording literally: filing lets CRA assess CGEB eligibility and does not guarantee payments; newcomer benefit applications are separate from tax filing but the appropriate form/process depends on family circumstances (RC66 information can also determine CGEB eligibility). Only eligible current-year tuition amounts can be transferred, while unused amounts can be carried forward. Sources checked 2026-09-24:
+
+- https://www.canada.ca/en/revenue-agency/services/child-family-benefits/canada-groceries-essentials-benefit.html
+- https://www.canada.ca/en/revenue-agency/services/child-family-benefits/canada-groceries-essentials-benefit/get-benefit.html
+- https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/about-your-tax-return/tax-return/completing-a-tax-return/deductions-credits-expenses/line-32300-your-tuition-education-textbook-amounts/transferring-carrying-forward-amounts.html
+
+Existing booking calendar URLs remain empty in bookings-config.js. The existing call-to-arrange fallback remains active; confirmation/meeting-link delivery requires the client’s actual financial-planning calendars and their provider configuration. No booking URL or confirmation workflow was invented.

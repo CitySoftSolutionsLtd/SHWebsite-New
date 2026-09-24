@@ -291,7 +291,7 @@
     const title = `${r.name} | SH Elevate`;
     const desc = r.bio
       ? r.bio.slice(0, 150).replace(/\s+\S*$/, "") + "…"
-      : `Read ${r.name}’s profile and book a free tax consultation with SH Elevate in Scarborough.`;
+      : `Read ${r.name}’s profile and book a financial planning consultation with SH Elevate in Scarborough.`;
     const url = `https://shelevate.ca/${profileHref(r)}`;
     document.title = title;
     setMeta("description", desc);

@@ -119,7 +119,7 @@
     if (human) human.checked = false;
     showMsg("");
     const heading = document.getElementById("book-modal-title");
-    if (heading) heading.textContent = title || "Book a free consultation";
+    if (heading) heading.textContent = title || "Book a financial planning consultation";
 
     if (!isAllowedBookingsUrl(pendingUrl)) {
       setStage("pending");
@@ -208,7 +208,7 @@
     const url = staffUrl(person);
     const title = person && isFilled(person.name) && !/^REPLACE_/i.test(person.name)
       ? "Book with " + person.name
-      : "Book a free consultation";
+      : "Book a financial planning consultation";
     openBookings(url, title);
   });
 

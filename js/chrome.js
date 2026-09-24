@@ -11,6 +11,8 @@
   // Use a trusted HTTPS URL; never derive this destination from query parameters.
   const PORTAL_URL = "https://victorious-sky-0924e120f.7.azurestaticapps.net";
 
+  document.querySelectorAll("[data-client-portal]").forEach((link) => { link.href = PORTAL_URL; });
+
   const active = document.body.getAttribute("data-active") || "";
   const P = document.body.getAttribute("data-prefix") || ""; // "" at root
 
@@ -22,7 +24,11 @@
     { code: "NL", province: "Newfoundland & Labrador", cities: ["Corner Brook", "Province-wide"] },
     { code: "NS", province: "Nova Scotia", cities: ["Province-wide"] },
     { code: "PE", province: "Prince Edward Island", cities: ["Province-wide"] },
-    { code: "AB", province: "Alberta", cities: ["Grande Prairie"] },
+    { code: "AB", province: "Alberta", cities: ["Province-wide"] },
+    { code: "BC", province: "British Columbia", cities: ["Province-wide"] },
+    { code: "MB", province: "Manitoba", cities: ["Province-wide"] },
+    { code: "NB", province: "New Brunswick", cities: ["Province-wide"] },
+    { code: "SK", province: "Saskatchewan", cities: ["Province-wide"] },
   ];
 
   const navLinks = [
@@ -63,13 +69,13 @@
             <div><h4>Service Areas Across Canada</h4><p>Remote tax services from coast to coast</p></div>
           </div>
           <div class="mega-grid">${megaCols}</div>
-          <div class="mega-foot">Serving 11+ communities across 5 provinces</div>
+          <div class="mega-foot">Serving all Canadian provinces except Quebec</div>
         </div>
       </div>
     </nav>
     <div class="nav-right">
       <a class="nav-phone" href="tel:+14379256546" aria-label="Call us at (437) 925-6546">${PHONE_SVG}<span>437·925·6546</span></a>
-      <a class="btn btn-gold nav-cta" href="${P}team.html" data-magnetic>Book Appointment</a>
+      <a class="btn btn-gold nav-cta" href="${P}team.html" data-magnetic>Book Financial Planning</a>
       <a class="btn btn-gold nav-portal" href="${PORTAL_URL}" referrerpolicy="no-referrer">Client Portal</a>
       <button class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>`;
@@ -109,9 +115,8 @@
 
   /* ---------------- FOOTER ---------------- */
   const footerAreas = [
-    { province: "Ontario", cities: [["Thunder Bay"],["Timmins"],["Sudbury"],["Hamilton"],["London"],["Sault Ste. Marie"]] },
-    { province: "Atlantic Canada", cities: [["Corner Brook, NL"],["Newfoundland"],["Nova Scotia"],["PEI"]] },
-    { province: "Western Canada", cities: [["Grande Prairie, AB"]] },
+    { province: "Central & Western Canada", cities: [["Ontario"], ["Manitoba"], ["Saskatchewan"], ["Alberta"], ["British Columbia"]] },
+    { province: "Atlantic Canada", cities: [["New Brunswick"], ["Newfoundland and Labrador"], ["Nova Scotia"], ["Prince Edward Island"]] },
   ];
   const footer = document.createElement("footer");
   footer.className = "footer";
@@ -122,8 +127,8 @@
       <div class="footer-top">
         <div class="footer-brand">
           <img class="logo-img" src="${P}images/logo-white.png" alt="SH Elevate Financial Group" width="220" height="141" />
-          <p>Tax and accounting in Scarborough, and remotely across Canada.</p>
-          <a class="footer-cta-link" href="${P}team.html">Book a free consultation →</a>
+          <p>Serving clients across Canada.</p>
+          <a class="footer-cta-link" href="${P}team.html">Book financial planning →</a>
         </div>
         <div class="footer-col">
           <h4>Navigation</h4>

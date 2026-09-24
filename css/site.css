@@ -1507,3 +1507,8 @@ a[href^="tel:"]:focus:not(:focus-visible) { outline: none; }
   .nav-right { gap: 12px; }
   .nav-portal { padding-inline: 12px; }
 }
+
+/* Personal-tax copy: readable form code and full-width text after removing the side panel. */
+.tax-form-label { white-space: nowrap; letter-spacing: 0.03em; }
+.personal-tax-intro { max-width: 960px; }
+.personal-tax-intro .split-text > p { max-width: 76ch; }
