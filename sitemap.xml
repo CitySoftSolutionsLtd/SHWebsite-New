@@ -108,6 +108,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <!-- Insights temporarily paused; restore this entry when re-enabled.
   <url>
     <loc>https://shelevate.ca/blog.html</loc>
     <lastmod>2026-09-13</lastmod>
@@ -117,6 +118,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://shelevate.ca/blog.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://shelevate.ca/blog.html"/>
   </url>
+  -->
   <url>
     <loc>https://shelevate.ca/blog-how-to-file-t1-personal-tax-return-canada.html</loc>
     <lastmod>2026-09-13</lastmod>

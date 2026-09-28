@@ -34,7 +34,8 @@
   const navLinks = [
     { key: "home", label: "Home", href: P || "index.html" },
     { key: "services", label: "Services", href: P + "services.html" },
-    { key: "blog", label: "Insights", href: P + "blog.html" },
+    // Insights temporarily hidden; retain this entry for re-enabling.
+    // { key: "blog", label: "Insights", href: P + "blog.html" },
     { key: "team", label: "Team", href: P + "team.html" },
   ];
 
@@ -96,7 +97,7 @@
     <a href="${P || "index.html"}">Home</a>
     <a href="${PORTAL_URL}" referrerpolicy="no-referrer">Client Portal</a>
     <a href="${P}services.html">Services</a>
-    <a href="${P}blog.html">Insights</a>
+    <!-- Insights temporarily hidden: <a href="${P}blog.html">Insights</a> -->
     <a href="${P}team.html">Team</a>
     <button type="button" class="mm-areas-btn" aria-expanded="false">Service Areas</button>
     <div class="mm-areas" hidden>
@@ -137,7 +138,7 @@
             <li><a href="${PORTAL_URL}" referrerpolicy="no-referrer">Client Portal</a></li>
             <li><a href="${P}services.html">Services</a></li>
             <li><a href="${P}team.html">Our Team</a></li>
-            <li><a href="${P}blog.html">Insights</a></li>
+            <!-- Insights temporarily hidden: <li><a href="${P}blog.html">Insights</a></li> -->
             <li><a href="${P || "index.html"}#contact">Contact</a></li>
           </ul>
         </div>

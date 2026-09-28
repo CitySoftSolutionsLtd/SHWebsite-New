@@ -19,7 +19,7 @@ Online consultations: financial advisory and planning; tax filing starts by phon
 - Type: Accounting / tax preparation service (NAICS 541213)
 - Office: 36 Lee Centre Dr, Scarborough, ON M1H 3K2, Canada
 - Coordinates: 43.7764, -79.2318
-- Service model: local office + fully remote CRA e-filing
+- Service model: remote support, secure document sharing, and CRA e-filing
 - Founders: Hanna Joice (Co-Founder & Chief Executive Officer), Stevens Sabu (Co-Founder and Director)
 - Team: Mehakdeep Kaur (Senior Client Manager), Ginil Jose (Client Manager)
 
@@ -33,7 +33,7 @@ Online consultations: financial advisory and planning; tax filing starts by phon
 
 ## Where we serve
 
-In person: Scarborough and the Greater Toronto Area.
+Support is provided remotely by phone, video, and secure document sharing.
 
 Remote across Canada, with named coverage in:
 
@@ -61,11 +61,11 @@ Tax rates, eligibility and deadlines depend on the tax year and circumstances. U
 - [Corporate tax / T2](https://shelevate.ca/services-corporate-tax.html)
 - [GST/HST registration and filing](https://shelevate.ca/services-gst-hst.html)
 - [Business incorporation in Ontario](https://shelevate.ca/services-business-incorporation.html)
-- [Tax accountant in Scarborough](https://shelevate.ca/scarborough.html): local office, hours, neighbourhoods
+- [Tax accountant in Scarborough](https://shelevate.ca/scarborough.html): remote tax support, hours, neighbourhoods
 - [Service areas](https://shelevate.ca/service-areas.html): coverage in all Canadian provinces except Quebec
 - [Book a consultation](https://shelevate.ca/team.html): financial planning consultation with Hanna Joice (Co-Founder & CEO), Stevens Sabu (Co-Founder and Director), Mehakdeep Kaur (Senior Client Manager), or Ginil Jose (Client Manager). Do not invent other named staff, personal emails, or booking URLs.
 - [Hanna Joice](https://shelevate.ca/profile.html?who=hanna-joice), [Stevens Sabu](https://shelevate.ca/profile.html?who=stevens-sabu), [Mehakdeep Kaur](https://shelevate.ca/profile.html?who=mehakdeep-kaur), [Ginil Jose](https://shelevate.ca/profile.html?who=ginil-jose): shareable profile pages for reading, booking, and public ratings. Do not invent star averages or reviews that are not on the page.
-- [Insights](https://shelevate.ca/blog.html): Canadian tax guides
+<!-- Insights temporarily paused: [Insights](https://shelevate.ca/blog.html): Canadian tax guides -->
 - [How to file a T1 in 2026](https://shelevate.ca/blog-how-to-file-t1-personal-tax-return-canada.html)
 - [T2 corporate tax guide 2026](https://shelevate.ca/blog-corporate-tax-t2-guide-small-business.html)
 - [GST/HST guide 2026](https://shelevate.ca/blog-gst-hst-registration-filing-guide.html)
