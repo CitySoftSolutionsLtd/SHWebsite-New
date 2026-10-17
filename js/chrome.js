@@ -1,5 +1,5 @@
 /* =====================================================================
-   SH ELEVATE — Shared chrome: navigation, footer, page transitions
+   SH Elevate Tax Inc. — Shared chrome: navigation, footer, page transitions
    Injected on every page so markup stays DRY. Runs immediately
    (script lives at end of <body>, so document.body exists).
    Set <body data-active="services|blog|team|areas|contact"> to highlight.
@@ -51,10 +51,10 @@
   const header = document.createElement("header");
   header.className = "nav";
   header.innerHTML = `
-    <a href="${P || "index.html"}" class="nav-logo" aria-label="SH Elevate Financial Group">
+    <a href="${P || "index.html"}" class="nav-logo" aria-label="SH Elevate Tax Inc.">
       <span class="logo-corner">
         <img class="logo-corner-bg" src="${P}images/curve.png" alt="" aria-hidden="true" width="640" height="640" decoding="async" />
-        <img class="logo-corner-mark" src="${P}images/logo-white.png" alt="SH Elevate Financial Group" width="180" height="115" decoding="async" />
+        <img class="logo-corner-mark" src="${P}images/logo-white.png" alt="SH Elevate Tax Inc." width="180" height="115" decoding="async" />
       </span>
     </a>
     <nav class="nav-links">
@@ -127,7 +127,7 @@
     <div class="wrap">
       <div class="footer-top">
         <div class="footer-brand">
-          <img class="logo-img" src="${P}images/logo-white.png" alt="SH Elevate Financial Group" width="220" height="141" />
+          <img class="logo-img" src="${P}images/logo-white.png" alt="SH Elevate Tax Inc." width="220" height="141" />
           <p>Serving clients across Canada.</p>
           <a class="footer-cta-link" href="${P}team.html">Book financial planning →</a>
         </div>
@@ -171,7 +171,7 @@
         </div>
       </div>
       <div class="footer-bar">
-        <span>© 2026 SH Elevate Financial Group Inc. All rights reserved.</span>
+        <span>© 2026 SH Elevate Tax Inc. All rights reserved.</span>
         <div class="fb-links"><a href="${P}privacy.html">Privacy Policy</a><a href="${P}terms.html">Terms of Service</a><span>shelevate.ca</span></div>
       </div>
     </div>`;
@@ -227,7 +227,7 @@
     pop.className = "callpop";
     pop.setAttribute("role", "dialog");
     pop.setAttribute("aria-modal", "true");
-    pop.setAttribute("aria-label", "Call SH Elevate Financial Group");
+    pop.setAttribute("aria-label", "Call SH Elevate Tax Inc.");
     pop.innerHTML = `
       <div class="callpop-backdrop" data-close></div>
       <div class="callpop-card">

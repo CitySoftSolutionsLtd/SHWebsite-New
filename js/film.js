@@ -1,5 +1,5 @@
 /* =====================================================================
-   SH ELEVATE — Cinematic scroll "film"
+   SH Elevate Tax Inc. — Cinematic scroll "film"
    Loading-% intro + pinned chaptered scenes that crossfade with a slow
    Ken-Burns zoom as you scroll, plus chapter counter + progress HUD.
    Keeps the brand theme — this is motion/layout only.
