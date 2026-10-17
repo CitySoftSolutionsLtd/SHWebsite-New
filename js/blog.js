@@ -1,5 +1,5 @@
 /* =====================================================================
-   SH ELEVATE — Insights/Blog: listing (articles live in their own HTML pages)
+   SH Elevate Tax Inc. — Insights/Blog: listing (articles live in their own HTML pages)
    ===================================================================== */
 (function () {
   "use strict";

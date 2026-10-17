@@ -1,5 +1,5 @@
 /* =====================================================================
-   SH ELEVATE — Animation engine
+   SH Elevate Tax Inc. — Animation engine
    Lenis smooth scroll + GSAP ScrollTrigger
    ===================================================================== */
 (function () {

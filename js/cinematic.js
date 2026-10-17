@@ -1,5 +1,5 @@
 /* =====================================================================
-   SH ELEVATE — Cinematic scroll layer (site-wide)
+   SH Elevate Tax Inc. — Cinematic scroll layer (site-wide)
    Every page opens with a PINNED hero "scene": as you scroll, the hero
    image zooms in while the headline drifts up & fades, then it releases
    into the page. Plus layered drift + scrubbed zooms through the page so
