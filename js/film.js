@@ -39,14 +39,10 @@
   }
 
   if (reduce) return; // CSS lays out all four scenes in reading order.
-  // Use the same scroll distance for sticky and ScrollTrigger scenes.
-  const compact = window.matchMedia("(max-width: 1024px), (pointer: coarse)");
-  const travelPercent = () => N * (compact.matches ? 60 : 45);
+  const travelPercent = N * 60;
   if (document.body.classList.contains("native-film-scroll")) {
     const stage = film.querySelector(".film-stage");
-    const setTravel = () => film.style.setProperty("--film-travel", travelPercent() + "svh");
-    setTravel();
-    compact.addEventListener("change", setTravel);
+    film.style.setProperty("--film-travel", travelPercent + "svh");
     let scheduled = false;
     let previous = -1;
     const update = () => {
@@ -86,9 +82,9 @@
   ScrollTrigger.create({
     trigger: ".film",
     start: "top top",
-    end: () => "+=" + travelPercent() + "%",
+    end: "+=" + travelPercent + "%",
     pin: ".film-stage",
-    scrub: compact.matches ? 0.35 : true,
+    scrub: 0.35,
     onUpdate: (self) => paint(self.progress),
     onRefresh: (self) => paint(self.progress),
   });

@@ -10,6 +10,7 @@
   // Treat phones, tablets and any touch device as "mobile": collapse the
   // heavier scroll-driven motion so touch scrolling stays native and smooth.
   const isMobile = window.matchMedia("(max-width: 1024px)").matches || isTouch;
+  const desktopMotion = !isMobile && document.body.dataset.active !== "home";
   /* ---------------- NAV ---------------- */
   const nav = document.querySelector(".nav");
   const onScrollNav = () => {
@@ -154,7 +155,7 @@
   });
 
   /* ---------------- Magnetic buttons ---------------- */
-  if (!isMobile && !reduce) {
+  if (desktopMotion && !reduce) {
     document.querySelectorAll("[data-magnetic]").forEach((btn) => {
       const strength = 0.32;
       btn.addEventListener("mousemove", (e) => {
@@ -200,7 +201,6 @@
   // parallel and also work in the downloadable file preview.
   if (!reduce) {
     const hasFilm = Boolean(document.querySelector(".film"));
-    const desktopMotion = !isMobile;
     if (desktopMotion || hasFilm) {
       const nativeFilm = hasFilm && CSS.supports("overflow-x", "clip") && CSS.supports("height", "1svh");
       // Modern desktops can run parallax on the browser's scroll timeline.
