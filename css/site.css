@@ -5,15 +5,8 @@
    ===================================================================== */
 
 /* ---------- Self-hosted brand fonts ---------- */
-@font-face{font-family:'Sora';font-style:normal;font-weight:400;font-display:swap;src:url('../fonts/sora-400.woff2') format('woff2');}
-@font-face{font-family:'Sora';font-style:normal;font-weight:500;font-display:swap;src:url('../fonts/sora-500.woff2') format('woff2');}
-@font-face{font-family:'Sora';font-style:normal;font-weight:600;font-display:swap;src:url('../fonts/sora-600.woff2') format('woff2');}
-@font-face{font-family:'Sora';font-style:normal;font-weight:700;font-display:swap;src:url('../fonts/sora-700.woff2') format('woff2');}
-@font-face{font-family:'Sora';font-style:normal;font-weight:800;font-display:swap;src:url('../fonts/sora-800.woff2') format('woff2');}
-@font-face{font-family:'Manrope';font-style:normal;font-weight:400;font-display:swap;src:url('../fonts/manrope-400.woff2') format('woff2');}
-@font-face{font-family:'Manrope';font-style:normal;font-weight:500;font-display:swap;src:url('../fonts/manrope-500.woff2') format('woff2');}
-@font-face{font-family:'Manrope';font-style:normal;font-weight:600;font-display:swap;src:url('../fonts/manrope-600.woff2') format('woff2');}
-@font-face{font-family:'Manrope';font-style:normal;font-weight:700;font-display:swap;src:url('../fonts/manrope-700.woff2') format('woff2');}
+@font-face{font-family:'Sora';font-style:normal;font-weight:400 800;font-display:swap;src:url('../fonts/sora-700.woff2') format('woff2');}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:200 800;font-display:swap;src:url('../fonts/manrope-400.woff2') format('woff2');}
 
 /* ---------- Tokens ---------- */
 :root {
@@ -33,7 +26,7 @@
   --ivory:      #0b1a30;                     /* primary text — deep navy-black */
   --ivory-soft: #EEF3F9;
   --ivory-dim:  rgba(11, 26, 48, 0.74);      /* secondary text */
-  --ivory-faint:rgba(11, 26, 48, 0.52);      /* tertiary text */
+  --ivory-faint:rgba(11, 26, 48, 0.66);      /* tertiary text */
   --paper:      #EEF3F9;
   --surface:    #ffffff;                     /* card surface */
   --surface-2:  #EEF3F9;                     /* alt section / chips */
@@ -70,12 +63,12 @@
 }
 
 /* ---------- Dark "islands": light text + glass surfaces on dark/photo areas ---------- */
-.nav, .mobile-menu, .hero, .film-hero, .film, .page-hero, .stats, .contact,
+.nav, .hero, .film-hero, .film, .page-hero, .stats, .contact,
 .cta-band, .footer, .mega, .blog-reader, .rep-modal, .book-modal, .stat-badge, .svc-card,
-.film-loader, .page-curtain {
+.page-curtain {
   --ivory: #f3f6fb;
   --ivory-dim: rgba(243, 246, 251, 0.76);
-  --ivory-faint: rgba(243, 246, 251, 0.44);
+  --ivory-faint: rgba(243, 246, 251, 0.68);
   --line: rgba(255, 255, 255, 0.18);
   --line-soft: rgba(255, 255, 255, 0.12);
   --surface: rgba(255, 255, 255, 0.05);
@@ -195,12 +188,17 @@ em.gold, .gold-text { color: var(--gold-light); font-style: normal; }
 .btn:hover .btn-arrow { transform: translateX(5px); }
 
 /* Primary button — solid brand navy on light surfaces… */
-.btn-gold {
+.btn-gold, .btn-filing, .btn-ghost {
   background: var(--navy-900);
   color: #fff;
+}
+.btn-gold, .btn-filing {
   box-shadow: 0 12px 32px -12px rgba(6, 32, 67, 0.5);
 }
-.btn-gold:hover { background: var(--navy-800); box-shadow: 0 20px 46px -14px rgba(6, 32, 67, 0.62); transform: translateY(-1px); }
+.btn-gold:hover, .btn-filing:hover, .btn-ghost:hover { background: var(--navy-800); }
+.btn-gold:hover, .btn-filing:hover { box-shadow: 0 20px 46px -14px rgba(6, 32, 67, 0.62); transform: translateY(-1px); }
+.btn-filing, .btn-ghost { border: 1px solid var(--steel-blue); }
+.btn-filing:focus-visible { outline: 3px solid white; outline-offset: 3px; }
 /* …and inverts to solid white on dark islands for maximum contrast. */
 .hero .btn-gold, .page-hero .btn-gold, .contact .btn-gold, .cta-band .btn-gold,
 .nav .btn-gold, .stats .btn-gold, .film .btn-gold, .rep-modal .btn-gold, .blog-reader .btn-gold {
@@ -211,19 +209,6 @@ em.gold, .gold-text { color: var(--gold-light); font-style: normal; }
 .nav .btn-gold:hover, .stats .btn-gold:hover, .film .btn-gold:hover, .rep-modal .btn-gold:hover, .blog-reader .btn-gold:hover {
   background: #e9f1fb; color: var(--navy-900);
 }
-
-.btn-ghost {
-  border: 1px solid var(--line);
-  color: var(--ivory);
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(6px);
-  /* Ghost buttons sit on hero photos; on shorter mobile heroes the secondary
-     one can land over a bright/faded region. A dark text-shadow keeps the label
-     legible there without filling the button (preserving the ghost look) — it's
-     invisible over the dark areas where these buttons normally sit. */
-  text-shadow: 0 1px 12px rgba(6, 12, 26, 0.75), 0 0 3px rgba(6, 12, 26, 0.6);
-}
-.btn-ghost:hover { border-color: var(--gold); color: var(--gold-light); background: rgba(255, 255, 255, 0.07); }
 
 /* ---------- Logo (real PNG) ---------- */
 .logo-img { display: block; width: auto; user-select: none; }
@@ -303,13 +288,6 @@ em.gold, .gold-text { color: var(--gold-light); font-style: normal; }
 .logo-corner-bg { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; }
 .logo-corner-mark { position: absolute; left: 11%; top: 13%; height: 56%; width: auto; object-fit: contain; filter: brightness(0) invert(1); }
 .nav.scrolled .logo-corner { width: clamp(104px, 13vw, 150px); height: clamp(60px, 8vw, 96px); }
-.nav.scrolled .nav-burger {
-  display: flex; align-items: center; justify-content: center;
-  width: 46px; height: 46px; padding: 0; gap: 5px;
-  background: var(--navy-800); border-radius: 50%;
-  box-shadow: 0 10px 26px -10px rgba(17,33,78,0.55);
-}
-.nav.scrolled .nav-burger span { width: 18px; background: #fff; }
 .nav-links { display: flex; align-items: center; gap: clamp(20px, 2.4vw, 40px); }
 .nav-link {
   position: relative;
@@ -337,47 +315,6 @@ em.gold, .gold-text { color: var(--gold-light); font-style: normal; }
 }
 .nav-phone:hover { border-color: var(--gold); background: rgba(255, 255, 255, 0.07); color: var(--gold-light); }
 .nav-cta { padding: 12px 24px; font-size: 0.8rem; }
-.nav-burger { display: none; flex-direction: column; gap: 5px; width: 30px; }
-.nav-burger span { height: 1.5px; background: var(--ivory); transition: 0.4s var(--ease); display: block; }
-
-/* Mobile menu */
-.mobile-menu {
-  position: fixed; inset: 0; z-index: 99;
-  background: var(--navy-950);
-  display: flex; flex-direction: column; justify-content: center; gap: 4px;
-  /* Reserve top space so the first item never centers up under the fixed logo
-     (nav sits above the menu so its close button stays tappable). Scrolls on
-     very short screens instead of clipping. */
-  padding: max(var(--gutter), 104px) var(--gutter) var(--gutter);
-  overflow-y: auto;
-  transform: translateY(-100%);
-  transition: transform 0.6s var(--ease);
-  visibility: hidden;
-}
-.mobile-menu.open { transform: translateY(0); visibility: visible; }
-.mobile-menu a,
-.mobile-menu .mm-areas-btn { font-family: var(--serif); font-size: clamp(1.55rem, 6vw, 2.2rem); color: var(--ivory); padding: 6px 0; transition: color 0.3s; }
-.mobile-menu a:hover,
-.mobile-menu .mm-areas-btn:hover { color: var(--gold-light); }
-.mobile-menu .mm-areas-btn {
-  display: block; width: 100%; background: none; border: 0; text-align: left; cursor: pointer;
-}
-.mobile-menu .mm-areas { display: none; padding: 8px 0 18px; }
-.mobile-menu .mm-areas.is-open { display: block; }
-.mobile-menu .mm-area { padding: 10px 0; }
-.mobile-menu .mm-area-prov {
-  display: flex; align-items: center; gap: 9px;
-  font-family: var(--sans); font-size: 0.72rem; font-weight: 600;
-  letter-spacing: 0.12em; text-transform: uppercase; color: var(--ivory);
-  margin-bottom: 6px;
-}
-.mobile-menu .mm-area-cities {
-  display: flex; flex-wrap: wrap; gap: 6px 14px;
-  font-family: var(--sans); font-size: 0.92rem; color: var(--ivory-dim);
-}
-.mobile-menu .mm-foot { margin-top: 40px; display: flex; flex-direction: column; gap: 8px; font-family: var(--sans); }
-.mobile-menu .mm-foot a { font-family: var(--sans); font-size: 1rem; color: var(--gold-light); }
-
 /* =====================================================================
    HERO
    ===================================================================== */
@@ -468,6 +405,20 @@ em.gold, .gold-text { color: var(--gold-light); font-style: normal; }
 .page-hero.sh-reveal .hero-eyebrow, .page-hero.sh-reveal .lede,
 .page-hero.sh-reveal .hero-actions, .page-hero.sh-reveal .breadcrumb {
   opacity: 1; transform: none;
+}
+
+/* Begin the mobile introduction at first paint, independently of the
+   scroll libraries. The text is readable throughout the same rising motion. */
+@media (max-width: 1024px), (pointer: coarse) {
+  .hero .lede, .page-hero .lede { opacity: 1; transform: none; }
+}
+@media (max-width: 1024px) and (prefers-reduced-motion: no-preference),
+       (pointer: coarse) and (prefers-reduced-motion: no-preference) {
+  .hero .lede, .page-hero .lede { animation: mobile-lede-in .9s var(--ease) both; }
+  @keyframes mobile-lede-in {
+    from { opacity: .82; transform: translateY(24px); }
+    to { opacity: 1; transform: none; }
+  }
 }
 
 /* ── Word-by-word blur-rise for display + section headings (premium reveal) ── */
@@ -723,13 +674,13 @@ em.gold, .gold-text { color: var(--gold-light); font-style: normal; }
 .footer-social svg { width: 16px; height: 16px; }
 .footer-cta-link { display: inline-block; margin-top: 22px; color: var(--gold-light); font-size: 0.92rem; font-weight: 600; letter-spacing: 0.01em; transition: color 0.3s, transform 0.4s var(--ease); }
 .footer-cta-link:hover { color: var(--ivory); transform: translateX(3px); }
-.footer-col h4 { font-family: var(--sans); font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 22px; font-weight: 600; }
+.footer-col h3 { font-family: var(--sans); font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 22px; font-weight: 600; }
 .footer-col ul { display: flex; flex-direction: column; gap: 13px; }
 .footer-col a, .footer-col li { font-size: 0.92rem; color: var(--ivory-dim); transition: color 0.3s; }
 .footer-col a:hover { color: var(--ivory); }
 .footer-areas { padding-block: clamp(40px, 5vw, 56px); border-top: 1px solid var(--line-soft); }
 .footer-areas .fa-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 26px; }
-.footer-areas .fa-head h4 { font-family: var(--sans); font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+.footer-areas .fa-head h3 { font-family: var(--sans); font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
 .fa-groups { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(24px, 3vw, 50px); }
 .fa-group .fg-region { font-size: 0.8rem; color: var(--ivory); font-weight: 600; margin-bottom: 14px; }
 .fa-group .fg-links { display: flex; flex-wrap: wrap; gap: 8px 18px; }
@@ -743,7 +694,6 @@ em.gold, .gold-text { color: var(--gold-light); font-style: normal; }
    ===================================================================== */
 @media (max-width: 1024px) {
   .nav-links, .nav-phone { display: none; }
-  .nav-burger { display: flex; }
   .philo, .process-pin, .why-grid, .faq-wrap { grid-template-columns: 1fr; }
   .process-media { aspect-ratio: 16/9; max-height: 320px; }
   .footer-top { grid-template-columns: 1fr 1fr; }
@@ -812,7 +762,7 @@ em.gold, .gold-text { color: var(--gold-light); font-style: normal; }
 }
 .nav-areas.open .mega { opacity: 1; visibility: visible; transform: none; }
 .mega-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 24px; border-bottom: 1px solid var(--line-soft); background: var(--surface); }
-.mega-head h4 { font-family: var(--sans); font-size: 0.92rem; font-weight: 600; color: var(--ivory); letter-spacing: 0; }
+.mega-head strong { font-family: var(--sans); font-size: 0.92rem; font-weight: 600; color: var(--ivory); letter-spacing: 0; }
 .mega-head p { font-size: 0.76rem; color: var(--ivory-dim); margin-top: 3px; }
 .mega-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 18px; padding: 14px; }
 .mega-col { padding: 12px 14px; border-radius: 10px; transition: background 0.3s; }
@@ -954,6 +904,8 @@ em.gold, .gold-text { color: var(--gold-light); font-style: normal; }
 /* =====================================================================
    TEAM
    ===================================================================== */
+:where(main section[id], main article[id], .rep-card[id]),
+#appointments { scroll-margin-top: clamp(76px, 9vw, 110px); }
 .team-head { text-align: center; margin-inline: auto; }
 .team-head .eyebrow { justify-content: center; }
 @media (min-width: 761px) {
@@ -980,7 +932,7 @@ em.gold, .gold-text { color: var(--gold-light); font-style: normal; }
 .rep-initials { display: grid; place-items: center; width: 100%; height: 100%; background: var(--navy-800); color: var(--ivory); font-family: var(--serif); font-size: 2rem; letter-spacing: 0.04em; }
 .rep-card h3 { font-size: 1.4rem; margin-bottom: 4px; }
 .rep-title { color: var(--gold-light); font-size: 0.9rem; font-weight: 500; }
-.rep-loc { color: var(--ivory-faint); font-size: 0.82rem; margin-top: 4px; }
+.rep-loc { color: var(--ivory-dim); font-size: 0.82rem; margin-top: 4px; }
 .rep-specs { display: flex; flex-wrap: wrap; gap: 7px; justify-content: center; margin: 20px 0; }
 .rep-specs span { font-size: 0.72rem; padding: 5px 12px; border-radius: 100px; border: 1px solid var(--line-soft); color: var(--ivory-dim); }
 .rep-meta { display: flex; justify-content: center; gap: 20px; margin: 18px 0; padding-top: 18px; border-top: 1px solid var(--line-soft); }
@@ -1028,7 +980,7 @@ em.gold, .gold-text { color: var(--gold-light); font-style: normal; }
 .rm-photo img { width: 100%; height: 100%; object-fit: cover; }
 .rm-name { font-family: var(--serif); font-size: 1.9rem; }
 .rm-title { color: var(--gold-light); font-size: 0.95rem; margin-top: 4px; }
-.rm-loc { color: var(--ivory-faint); font-size: 0.84rem; margin-top: 2px; }
+.rm-loc { color: var(--ivory-dim); font-size: 0.84rem; margin-top: 2px; }
 .rm-bio { color: var(--ivory-dim); line-height: 1.7; margin-bottom: 26px; }
 .rm-specs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
 .rm-specs span { font-size: 0.76rem; padding: 6px 14px; border-radius: 100px; border: 1px solid var(--line); color: var(--gold-light); }
@@ -1201,30 +1153,8 @@ em.gold, .gold-text { color: var(--gold-light); font-style: normal; }
 
 /* =====================================================================
    CINEMATIC SCROLL FILM (homepage)
-   Loading intro · marquee · pinned chaptered scenes with crossfade
+   Loading intro · pinned chaptered scenes with crossfade
    ===================================================================== */
-/* --- Loading intro --- */
-.film-loader {
-  position: fixed; inset: 0; z-index: 9998;
-  background: var(--navy-950);
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 30px;
-  transition: transform 1s var(--ease), opacity 0.6s ease;
-}
-.film-loader.done { transform: translateY(-100%); }
-.film-loader .fl-logo { height: 70px; filter: brightness(0) invert(1); opacity: 0.92; }
-.film-loader .fl-row { display: flex; align-items: baseline; gap: 14px; font-family: var(--sans); font-size: 0.8rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ivory-dim); }
-.film-loader .fl-pct { font-family: var(--serif); font-size: clamp(2.4rem, 6vw, 4rem); color: var(--gold-light); letter-spacing: 0; min-width: 3.5ch; text-align: right; font-variant-numeric: tabular-nums; }
-.film-loader .fl-bar { width: min(280px, 60vw); height: 1px; background: var(--line-soft); overflow: hidden; }
-.film-loader .fl-bar span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
-
-/* --- Marquee --- */
-.marquee { overflow: hidden; padding-block: 18px; }
-.marquee-track { display: inline-flex; white-space: nowrap; will-change: transform; animation: marq 28s linear infinite; }
-.marquee.rev .marquee-track { animation-direction: reverse; }
-.marquee-track span { font-family: var(--serif); font-size: clamp(1.1rem, 2vw, 1.7rem); color: var(--ivory-dim); padding-inline: 26px; letter-spacing: 0.02em; }
-.marquee-track .star { color: var(--gold); font-style: normal; }
-@keyframes marq { to { transform: translateX(-50%); } }
-
 /* --- Film hero (title card) --- */
 .film-hero { position: relative; min-height: 100svh; display: flex; flex-direction: column; justify-content: center; overflow: hidden; padding-top: 90px; }
 .film-hero .fh-inner { width: 100%; text-align: center; }
@@ -1232,7 +1162,6 @@ em.gold, .gold-text { color: var(--gold-light); font-style: normal; }
 .film-hero .eyebrow::before { display: none; }
 .film-hero h1 { font-size: clamp(2.8rem, 8vw, 7rem); line-height: 0.98; margin: 0 auto; max-width: 16ch; }
 .film-hero .fh-sub { margin: 30px auto 0; }
-.film-hero .marquee { margin-top: clamp(44px, 7vw, 90px); }
 
 /* --- The film: pinned chaptered scenes --- */
 .film { position: relative; background: var(--navy-950); }
@@ -1246,29 +1175,32 @@ em.gold, .gold-text { color: var(--gold-light); font-style: normal; }
 .film-content { position: absolute; inset: 0; z-index: 2; display: flex; align-items: flex-end; padding-bottom: clamp(70px, 11vh, 150px); }
 .chapter-text { position: absolute; left: 0; right: 0; padding-inline: var(--gutter); max-width: var(--maxw); margin: 0 auto; will-change: opacity, transform; }
 .chapter-text .ch-kicker { display: flex; align-items: center; gap: 14px; font-size: 0.78rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 22px; }
-.chapter-text .ch-kicker .ch-no { font-family: var(--serif); font-style: italic; font-size: 1.4rem; letter-spacing: 0; color: var(--gold-light); }
 .chapter-text h2 { font-size: clamp(2.4rem, 6vw, 5.4rem); line-height: 1.0; max-width: 16ch; }
 .chapter-text .ch-desc { font-size: clamp(1.05rem, 1.5vw, 1.35rem); color: var(--ivory); max-width: 46ch; margin-top: 24px; line-height: 1.6; text-shadow: 0 1px 14px rgba(6,12,26,0.6); }
 .chapter-text .ch-spec { margin-top: 28px; font-size: 0.74rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ivory-dim); }
 
-/* HUD: counter + progress */
-.film-hud { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
-.film-hud .fh-count { position: absolute; top: clamp(90px, 12vh, 130px); right: var(--gutter); font-family: var(--serif); font-size: clamp(1rem, 1.4vw, 1.3rem); letter-spacing: 0.2em; color: var(--ivory-dim); }
-.film-hud .fh-count b { color: var(--gold-light); font-style: italic; font-weight: 500; }
-.film-hud .fh-progress { position: absolute; left: var(--gutter); right: var(--gutter); bottom: 40px; height: 1px; background: var(--line-soft); }
-.film-hud .fh-progress span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
-.film-hud .fh-chapters { position: absolute; left: var(--gutter); bottom: 52px; display: flex; gap: 10px; }
-.film-hud .fh-chapters i { width: 26px; height: 2px; background: var(--line-soft); transition: background 0.4s; }
-.film-hud .fh-chapters i.on { background: var(--gold); }
+/* Leave room for the island below the text. */
+body:has(.quick-island) .film { --film-controls-offset: calc(76px + env(safe-area-inset-bottom, 0px)); }
+body:has(.quick-island) .film .film-content { padding-bottom: max(11vh, calc(var(--film-controls-offset) + 58px)); }
 
 @media (max-width: 760px) {
   .chapter-text h2 { font-size: clamp(2rem, 9vw, 3.2rem); }
   .chapter-text .ch-desc { font-size: 1rem; }
   .film-content { padding-bottom: 110px; }
 }
+/* Frame the original landscape consultation photo above the copy on portrait screens. */
+@media (max-width: 900px) and (orientation: portrait) {
+  .chapter-img:first-child { background: var(--navy-950); }
+  .chapter-img:first-child img {
+    height: min(85vw, 54svh);
+    margin-top: min(9svh, 76px);
+    object-position: 50% 35%;
+  }
+  .chapter-img:first-child::after {
+    background: linear-gradient(to bottom, rgba(3,12,29,.23), transparent min(57vw, 31svh), var(--navy-950) min(103vw, 64svh));
+  }
+}
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track { animation: none; }
-  .film-loader { display: none; }
   .hero-bg img, .page-hero-bg img { animation: none; }
 }
 
@@ -1369,9 +1301,6 @@ em.gold, .gold-text { color: var(--gold-light); font-style: normal; }
 .footer-col a.tel-inline { color: var(--ivory-dim); min-height: 32px; }
 .footer-col a.tel-inline:hover { color: var(--ivory); }
 .footer-col a.tel-inline:hover .tel-ico { color: var(--gold-light); }
-.mobile-menu .mm-foot a.tel-inline { color: var(--gold-light); min-height: 44px; }
-.mobile-menu .mm-foot a.tel-inline .tel-ico { color: var(--gold-light); }
-.mobile-menu .mm-foot a.tel-inline:active { opacity: 0.6; }
 
 /* --- in-content tel links: masked glyph + grow-an-underline, ZERO HTML edits.
        background-size underline is robust for both inline-in-sentence and flex. --- */
@@ -1501,7 +1430,6 @@ a[href^="tel:"]:focus:not(:focus-visible) { outline: none; }
 }
 @media (max-width: 1200px) {
   .nav-links { display: none; }
-  .nav-burger { display: flex; }
 }
 @media (max-width: 480px) {
   .nav-right { gap: 12px; }
@@ -1512,3 +1440,127 @@ a[href^="tel:"]:focus:not(:focus-visible) { outline: none; }
 .tax-form-label { white-space: nowrap; letter-spacing: 0.03em; }
 .personal-tax-intro { max-width: 960px; }
 .personal-tax-intro .split-text > p { max-width: 76ch; }
+
+/* Floating navigation uses the same scroll state as the header. */
+.quick-island {
+  position: fixed;
+  z-index: 85;
+  left: 50%;
+  bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  width: min(410px, calc(100% - 32px));
+  padding: 5px;
+  border-radius: 36px;
+  color: var(--navy-900);
+  background-color: var(--paper);
+  border: 1px solid rgba(255, 255, 255, .32);
+  box-shadow: 0 5px 22px rgba(6, 32, 67, .12);
+}
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .quick-island {
+    background-color: rgba(255, 255, 255, .65);
+    background-image: linear-gradient(145deg, rgba(255, 255, 255, .32), transparent 60%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    backdrop-filter: blur(16px) saturate(140%);
+  }
+  .nav.scrolled ~ .quick-island {
+    background-color: rgba(255, 255, 255, .76);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    backdrop-filter: blur(20px) saturate(140%);
+  }
+}
+.nav.scrolled ~ .quick-island {
+  box-shadow: 0 6px 26px rgba(6, 32, 67, .16);
+}
+.quick-island > :is(a, button) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  min-height: 48px;
+  padding: 3px 0;
+  border: 1px solid transparent;
+  border-radius: 28px;
+  color: inherit;
+  font: 600 .72rem/1.15 var(--sans);
+  text-align: center;
+}
+.quick-island > :is([aria-current], [aria-expanded="true"]) {
+  background: rgba(6, 32, 67, .08);
+  border-color: transparent;
+}
+.quick-island a[href="#top"][aria-current] svg,
+.quick-island a[href="#services"][aria-current] svg { fill: currentColor; }
+.quick-island svg {
+  width: 23px; height: 23px; flex: none;
+  stroke: currentColor; fill: none;
+  stroke-width: 1.65; stroke-linecap: round; stroke-linejoin: round;
+}
+.quick-island :focus-visible { outline: 2px solid var(--navy-700); outline-offset: 1px; }
+html:has(.quick-island) { scroll-padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
+.footer:has(+ .quick-island) { padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
+body:has([role="dialog"].open) .quick-island { visibility: hidden; }
+@media (min-width: 360px) {
+  .quick-island > a { white-space: nowrap; }
+}
+@media (min-width: 700px) {
+  .quick-island { width: 445px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
+  .quick-island > :is(a, button) { font-size: .8rem; }
+}
+@media (min-width: 1025px) {
+  .quick-island { width: max-content; grid-template-columns: repeat(5, auto); }
+  .quick-island > :is(a, button) { flex-direction: row; gap: 7px; padding-inline: 14px; }
+}
+@media (hover: hover) {
+  .quick-island :is(a, button):hover { background-color: rgba(255, 255, 255, .64); }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .quick-island, .nav.scrolled ~ .quick-island {
+    background: var(--paper);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* Reserve space for the staff profile and rating form while their scripts load. */
+@media (scripting: enabled) {
+  #profile-root:empty { min-height: 100vh; }
+}
+
+.lede a:not(.btn) { text-decoration: underline; text-underline-offset: 0.16em; }
+
+
+/* Keep touch scrolling native while the shared painter crossfades the photos. */
+.native-film-scroll { overflow-x: clip; }
+.native-film-scroll .film { height: calc(100svh + var(--film-travel, 240svh)); }
+.native-film-scroll .film-stage { position: sticky; top: 0; }
+
+/* A fast scroll can reach the film before its enhancement scripts arrive. */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .chapter-img:first-child { opacity: 1; }
+  .chapter-text ~ .chapter-text { opacity: 0; }
+}
+
+/* Keep every scene readable when the visitor uses reduced motion or no script. */
+@media (prefers-reduced-motion: reduce), (scripting: none) {
+  .film-stage { display: grid; height: auto; }
+  .film-bg, .film-content { display: contents; }
+  .chapter-img, .chapter-text { position: relative; grid-column: 1; grid-row: var(--scene); opacity: 1; transform: none; will-change: auto; }
+  .chapter-img { min-height: 100svh; }
+  .chapter-img:nth-child(1), .chapter-text:nth-child(1) { --scene: 1; }
+  .chapter-img:nth-child(2), .chapter-text:nth-child(2) { --scene: 2; }
+  .chapter-img:nth-child(3), .chapter-text:nth-child(3) { --scene: 3; }
+  .chapter-img:nth-child(4), .chapter-text:nth-child(4) { --scene: 4; }
+  .chapter-img picture { position: absolute; inset: 0; }
+  .chapter-text { width: 100%; align-self: end; padding-bottom: max(12vh, 110px); z-index: 1; }
+}
+@media (scripting: none) {
+  [data-reveal], .hero .hero-eyebrow, .hero .lede, .hero .hero-actions,
+  .page-hero .hero-eyebrow, .page-hero .lede, .page-hero .breadcrumb,
+  .clip-line > span, .svc-card[data-reveal] .svc-bg { opacity: 1; transform: none; clip-path: none; }
+}

@@ -80,6 +80,6 @@ Allow: /
 User-agent: TikTokSpider
 Allow: /
 
-Sitemap: https://shelevate.ca/sitemap.xml
+Sitemap: https://www.shelevate.ca/sitemap.xml
 # Machine-readable firm facts for AI assistants:
-# https://shelevate.ca/llms.txt
+# https://www.shelevate.ca/llms.txt

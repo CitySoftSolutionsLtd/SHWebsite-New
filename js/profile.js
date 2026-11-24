@@ -15,7 +15,7 @@
   } catch { /* ratings remain unavailable for invalid configuration */ }
 
   const params = new URLSearchParams(window.location.search);
-  const slug = (params.get("who") || window.location.hash.replace(/^#/, "") || "").trim().toLowerCase();
+  const slug = (document.body.dataset.profileSlug || params.get("who") || window.location.hash.replace(/^#/, "") || "").trim().toLowerCase();
 
   const escapeHtml = (value) =>
     String(value ?? "").replace(/[&<>"']/g, (c) => ({
@@ -38,7 +38,7 @@
     return `<span class="rep-initials" aria-hidden="true">${escapeHtml(initials(r.name))}</span>`;
   };
 
-  const profileHref = (person) => "profile.html?who=" + encodeURIComponent(person.slug);
+  const profileHref = (person) => "profile-" + encodeURIComponent(person.slug) + ".html";
 
   const setMeta = (name, content) => {
     let el = document.querySelector(`meta[name="${name}"], meta[property="${name}"]`);
@@ -59,6 +59,7 @@
       </a>`).join("");
     return `
       <div class="profile-dir">
+        <h1 class="profile-name">Team profiles</h1>
         <p class="lede">Choose someone to read their profile, book a time, or leave a rating.</p>
         <div class="profile-dir-grid">${cards}</div>
       </div>`;
@@ -292,7 +293,7 @@
     const desc = r.bio
       ? r.bio.slice(0, 150).replace(/\s+\S*$/, "") + "…"
       : `Read ${r.name}’s profile and book a financial planning consultation with SH Elevate Tax Inc. in Scarborough.`;
-    const url = `https://shelevate.ca/${profileHref(r)}`;
+    const url = `https://www.shelevate.ca/${profileHref(r)}`;
     document.title = title;
     setMeta("description", desc);
     setMeta("og:title", title);
@@ -302,7 +303,7 @@
     setMeta("twitter:description", desc);
     setCanonical(url);
     if (r.photo && !/^https?:/i.test(r.photo)) {
-      const abs = "https://shelevate.ca/" + r.photo.replace(/^\//, "");
+      const abs = "https://www.shelevate.ca/" + r.photo.replace(/^\//, "");
       setMeta("og:image", abs);
       setMeta("twitter:image", abs);
     }
@@ -314,8 +315,8 @@
       name: r.name,
       jobTitle: r.title || undefined,
       url,
-      image: r.photo && !/^https?:/i.test(r.photo) ? "https://shelevate.ca/" + r.photo.replace(/^\//, "") : undefined,
-      worksFor: { "@id": "https://shelevate.ca/#organization" },
+      image: r.photo && !/^https?:/i.test(r.photo) ? "https://www.shelevate.ca/" + r.photo.replace(/^\//, "") : undefined,
+      worksFor: { "@id": "https://www.shelevate.ca/#organization" },
       email: r.email || "info@shelevate.ca",
       telephone: (r.phone || "+1-437-925-6546").replace(/[^\d+]/g, (ch) => (ch === "+" ? "+" : "")),
     });
@@ -331,11 +332,12 @@
   const person = reps.find((r) => r.slug === slug);
   if (!person) {
     document.title = "Profile not found | SH Elevate Tax Inc.";
+    setMeta("robots", "noindex, follow");
     root.innerHTML = missingHTML();
     return;
   }
 
-  applyPersonSeo(person);
+  if (!document.body.dataset.profileSlug) applyPersonSeo(person);
   const crumb = document.getElementById("profile-crumb");
   if (crumb) crumb.textContent = person.name;
   const lede = document.getElementById("profile-hero-lede");

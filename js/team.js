@@ -9,6 +9,8 @@
   const staffSection = document.getElementById("team-staff-section");
 
   if (!reps.length) {
+    document.getElementById("appointments").removeAttribute("id");
+    document.querySelector(".book-cta").id = "appointments";
     if (tools) tools.hidden = true;
     if (staffSection) staffSection.hidden = true;
     return;
@@ -63,7 +65,7 @@
           <div class="rm"><div class="v">${(r.languages || []).length || "—"}</div><div class="k">Languages</div></div></div>` : ""}
         <div class="rep-actions">
           <a class="btn btn-gold rep-book" href="#book" data-book="${escapeHtml(r.slug)}">Book Appointment <span class="btn-arrow">→</span></a>
-          ${r.bio ? `<a class="rep-profile-link" href="profile.html?who=${encodeURIComponent(r.slug)}">View full profile</a>` : ""}
+          ${r.bio ? `<a class="rep-profile-link" href="profile-${encodeURIComponent(r.slug)}.html">View full profile</a>` : ""}
         </div>
       </div>`;
   }

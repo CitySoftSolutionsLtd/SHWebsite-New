@@ -1,0 +1,55 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/contact-8",
+      "destination": "/#contact",
+      "permanent": true
+    },
+    {
+      "source": "/blog.html",
+      "destination": "/",
+      "permanent": false
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "sh-website-new-sigma.vercel.app"
+        }
+      ],
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, follow"
+        }
+      ]
+    },
+    {
+      "source": "/images/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
+    },
+    {
+      "source": "/fonts/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800"
+        }
+      ]
+    }
+  ]
+}

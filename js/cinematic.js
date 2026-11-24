@@ -1,3 +1,109 @@
+// Enhancement layer for pointer devices. The basic page is already interactive.
+(function () {
+  "use strict";
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const isTouch = window.matchMedia("(pointer: coarse)").matches;
+  const isMobile = window.matchMedia("(max-width: 1024px)").matches || isTouch;
+  const hasGSAP = typeof window.gsap !== "undefined";
+
+  /* ---------------- Lenis smooth scroll ----------------
+     Desktop / pointer devices only. On touch devices Lenis overrides the
+     native momentum + inertia the OS already provides, which is the #1 cause
+     of the "draggy" / high-friction scroll feel on phones — so there we let
+     the browser scroll natively. */
+  let lenis = null;
+  if (typeof window.Lenis !== "undefined" && !reduce && !isTouch) {
+    lenis = new Lenis({
+      lerp: 0.08,
+      wheelMultiplier: 1,
+      smoothWheel: true,
+    });
+    window.__lenis = lenis;
+
+    if (hasGSAP && window.ScrollTrigger) {
+      // Drive Lenis from the GSAP ticker ONLY (avoids double-rAF jank)
+      lenis.on("scroll", ScrollTrigger.update);
+      gsap.ticker.add((t) => lenis.raf(t * 1000));
+      gsap.ticker.lagSmoothing(0);
+    } else {
+      // Fallback driver when GSAP isn't present
+      const raf = (t) => { lenis.raf(t); requestAnimationFrame(raf); };
+      requestAnimationFrame(raf);
+    }
+  }
+
+  /* ---------------- GSAP ScrollTrigger effects ---------------- */
+  if (hasGSAP && window.ScrollTrigger && !reduce) {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // (Hero entrance handled by CSS for reliability.)
+
+    // Parallax bg layers + image inner-parallax — DESKTOP ONLY.
+    // These scrub transforms run on large hero/section images every scroll
+    // frame; on mobile that main-thread churn is what makes scrolling feel
+    // rough, for little visual payoff — so they're skipped (images sit static).
+    if (!isMobile) {
+      const parallax = (sel, amt) => {
+        document.querySelectorAll(sel).forEach((el) => {
+          gsap.to(el, {
+            yPercent: amt, ease: "none",
+            scrollTrigger: { trigger: el.closest("section") || el, start: "top bottom", end: "bottom top", scrub: true },
+          });
+        });
+      };
+      parallax(".stats-bg", -12);
+      parallax(".contact-bg", -10);
+
+      // Image inner parallax (zoomy)
+      document.querySelectorAll("[data-img-parallax]").forEach((el) => {
+        gsap.fromTo(el, { yPercent: -8 }, {
+          yPercent: 8, ease: "none",
+          scrollTrigger: { trigger: el.closest("section, .frame, .why-media, .philo-media") || el, start: "top bottom", end: "bottom top", scrub: true },
+        });
+      });
+    }
+
+    // PROCESS pinned scrollytelling
+    if (!isMobile && document.querySelector(".process-pin")) {
+      const steps = gsap.utils.toArray(".p-step");
+      const imgs = gsap.utils.toArray(".process-media img");
+      const setActive = (i) => {
+        steps.forEach((s, k) => s.classList.toggle("dim", k !== i));
+        imgs.forEach((im, k) => im.classList.toggle("active", k === i));
+      };
+      setActive(0);
+      ScrollTrigger.create({
+        trigger: ".process-pin",
+        start: "top top",
+        end: "+=" + (steps.length * 60) + "%",
+        pin: true,
+        scrub: 0.5,
+        onUpdate: (self) => {
+          const i = Math.min(steps.length - 1, Math.floor(self.progress * steps.length));
+          setActive(i);
+        },
+      });
+    } else {
+      const steps = gsap.utils.toArray(".p-step");
+      const imgs = gsap.utils.toArray(".process-media img");
+      steps.forEach((s) => s.classList.remove("dim"));
+      if (imgs[0]) imgs[0].classList.add("active");
+    }
+
+    // Section heading lines subtle parallax fade handled by reveals
+
+    ScrollTrigger.refresh();
+  } else {
+    // No-GSAP fallback: ensure process visible
+    document.querySelectorAll(".p-step").forEach((s) => s.classList.remove("dim"));
+    const im = document.querySelector(".process-media img");
+    if (im) im.classList.add("active");
+  }
+
+  // Refresh on full load (images)
+  window.addEventListener("load", () => { if (window.ScrollTrigger) ScrollTrigger.refresh(); });
+})();
+
 /* =====================================================================
    SH Elevate Tax Inc. — Cinematic scroll layer (site-wide)
    Every page opens with a PINNED hero "scene": as you scroll, the hero

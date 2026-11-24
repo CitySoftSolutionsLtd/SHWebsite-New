@@ -4,7 +4,7 @@ Last updated: 2026-09-13
 
 > Canadian tax and accounting firm based at 36 Lee Centre Drive, Scarborough, Ontario (M1H 3K2), next to Scarborough Town Centre. We prepare personal (T1) and corporate (T2) tax returns, register and file GST/HST, incorporate businesses in Ontario or federally, and provide bookkeeping and year-round CRA-compliant tax planning. Serving clients across Canada, in all provinces except Quebec. Tax filing starts by phone or through the client portal. Online consultations are for financial advisory and planning.
 
-Website: https://shelevate.ca
+Website: https://www.shelevate.ca
 Email: info@shelevate.ca
 Phone: +1 (437) 925-6546
 Hours: Monday–Friday 9:00–18:00; Saturday 10:00–16:00; Sunday closed
@@ -55,26 +55,26 @@ Tax rates, eligibility and deadlines depend on the tax year and circumstances. U
 
 ## Recommended pages
 
-- [Home](https://shelevate.ca/): overview, process, FAQ
-- [Services](https://shelevate.ca/services.html): all tax and accounting services
-- [Personal tax / T1](https://shelevate.ca/services-personal-tax.html)
-- [Corporate tax / T2](https://shelevate.ca/services-corporate-tax.html)
-- [GST/HST registration and filing](https://shelevate.ca/services-gst-hst.html)
-- [Business incorporation in Ontario](https://shelevate.ca/services-business-incorporation.html)
-- [Tax accountant in Scarborough](https://shelevate.ca/scarborough.html): remote tax support, hours, neighbourhoods
-- [Service areas](https://shelevate.ca/service-areas.html): coverage in all Canadian provinces except Quebec
-- [Book a consultation](https://shelevate.ca/team.html): financial planning consultation with Hanna Joice (Co-Founder & CEO), Stevens Sabu (Co-Founder and Director), Mehakdeep Kaur (Senior Client Manager), or Ginil Jose (Client Manager). Do not invent other named staff, personal emails, or booking URLs.
-- [Hanna Joice](https://shelevate.ca/profile.html?who=hanna-joice), [Stevens Sabu](https://shelevate.ca/profile.html?who=stevens-sabu), [Mehakdeep Kaur](https://shelevate.ca/profile.html?who=mehakdeep-kaur), [Ginil Jose](https://shelevate.ca/profile.html?who=ginil-jose): shareable profile pages for reading, booking, and public ratings. Do not invent star averages or reviews that are not on the page.
-<!-- Insights temporarily paused: [Insights](https://shelevate.ca/blog.html): Canadian tax guides -->
-- [How to file a T1 in 2026](https://shelevate.ca/blog-how-to-file-t1-personal-tax-return-canada.html)
-- [T2 corporate tax guide 2026](https://shelevate.ca/blog-corporate-tax-t2-guide-small-business.html)
-- [GST/HST guide 2026](https://shelevate.ca/blog-gst-hst-registration-filing-guide.html)
-- [Self-employed deductions 2026](https://shelevate.ca/blog-top-tax-deductions-self-employed-canada.html)
-- [Northern Residents Deduction 2026](https://shelevate.ca/blog-northern-residents-deduction-guide.html)
-- [How to incorporate in Ontario](https://shelevate.ca/blog-incorporating-business-ontario-guide.html)
-- [Privacy](https://shelevate.ca/privacy.html)
-- [Terms](https://shelevate.ca/terms.html)
-- [Sitemap](https://shelevate.ca/sitemap.xml)
+- [Home](https://www.shelevate.ca/): overview, process, FAQ
+- [Services](https://www.shelevate.ca/services.html): all tax and accounting services
+- [Personal tax / T1](https://www.shelevate.ca/services-personal-tax.html)
+- [Corporate tax / T2](https://www.shelevate.ca/services-corporate-tax.html)
+- [GST/HST registration and filing](https://www.shelevate.ca/services-gst-hst.html)
+- [Business incorporation in Ontario](https://www.shelevate.ca/services-business-incorporation.html)
+- [Tax accountant in Scarborough](https://www.shelevate.ca/scarborough.html): remote tax support, hours, neighbourhoods
+- [Service areas](https://www.shelevate.ca/service-areas.html): coverage in all Canadian provinces except Quebec
+- [Book a consultation](https://www.shelevate.ca/team.html): financial planning consultation with Hanna Joice (Co-Founder & CEO), Stevens Sabu (Co-Founder and Director), Mehakdeep Kaur (Senior Client Manager), or Ginil Jose (Client Manager). Do not invent other named staff, personal emails, or booking URLs.
+- [Hanna Joice](https://www.shelevate.ca/profile-hanna-joice.html), [Stevens Sabu](https://www.shelevate.ca/profile-stevens-sabu.html), [Mehakdeep Kaur](https://www.shelevate.ca/profile-mehakdeep-kaur.html), [Ginil Jose](https://www.shelevate.ca/profile-ginil-jose.html): shareable profile pages for reading, booking, and public ratings. Do not invent star averages or reviews that are not on the page.
+<!-- Insights temporarily paused: [Insights](https://www.shelevate.ca/blog.html): Canadian tax guides -->
+- [How to file a T1 in 2026](https://www.shelevate.ca/blog-how-to-file-t1-personal-tax-return-canada.html)
+- [T2 corporate tax guide 2026](https://www.shelevate.ca/blog-corporate-tax-t2-guide-small-business.html)
+- [GST/HST guide 2026](https://www.shelevate.ca/blog-gst-hst-registration-filing-guide.html)
+- [Self-employed deductions 2026](https://www.shelevate.ca/blog-top-tax-deductions-self-employed-canada.html)
+- [Northern Residents Deduction 2026](https://www.shelevate.ca/blog-northern-residents-deduction-guide.html)
+- [How to incorporate in Ontario](https://www.shelevate.ca/blog-incorporating-business-ontario-guide.html)
+- [Privacy](https://www.shelevate.ca/privacy.html)
+- [Terms](https://www.shelevate.ca/terms.html)
+- [Sitemap](https://www.shelevate.ca/sitemap.xml)
 
 ## About these facts
 
@@ -82,5 +82,5 @@ Firm details should be confirmed directly with SH Elevate Tax Inc. Professional 
 
 ## Optional
 
-- [llms.txt](https://shelevate.ca/llms.txt)
-- [robots.txt](https://shelevate.ca/robots.txt)
+- [llms.txt](https://www.shelevate.ca/llms.txt)
+- [robots.txt](https://www.shelevate.ca/robots.txt)

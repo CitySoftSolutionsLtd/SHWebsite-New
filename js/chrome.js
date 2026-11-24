@@ -53,8 +53,8 @@
   header.innerHTML = `
     <a href="${P || "index.html"}" class="nav-logo" aria-label="SH Elevate Tax Inc.">
       <span class="logo-corner">
-        <img class="logo-corner-bg" src="${P}images/curve.png" alt="" aria-hidden="true" width="640" height="640" decoding="async" />
-        <img class="logo-corner-mark" src="${P}images/logo-white.png" alt="SH Elevate Tax Inc." width="180" height="115" decoding="async" />
+        <img class="logo-corner-bg" src="${P}images/curve-web.webp" alt="" aria-hidden="true" width="640" height="640" decoding="async" />
+        <img class="logo-corner-mark" src="${P}images/logo-white-web.webp" alt="SH Elevate Tax Inc." width="180" height="115" decoding="async" />
       </span>
     </a>
     <nav class="nav-links">
@@ -67,7 +67,7 @@
         </button>
         <div class="mega">
           <div class="mega-head">
-            <div><h4>Service Areas Across Canada</h4><p>Remote tax services from coast to coast</p></div>
+            <div><strong>Service Areas Across Canada</strong><p>Remote tax services from coast to coast</p></div>
           </div>
           <div class="mega-grid">${megaCols}</div>
           <div class="mega-foot">Serving all Canadian provinces except Quebec</div>
@@ -75,10 +75,9 @@
       </div>
     </nav>
     <div class="nav-right">
-      <a class="nav-phone" href="tel:+14379256546" aria-label="Call us at (437) 925-6546">${PHONE_SVG}<span>437·925·6546</span></a>
-      <a class="btn btn-gold nav-cta" href="${P}team.html" data-magnetic>Book Financial Planning</a>
+      <a class="nav-phone" href="tel:+14379256546" aria-label="Call us at (437) 925-6546">${PHONE_SVG}<span>(437) 925-6546</span></a>
+      <a class="btn btn-gold nav-cta" href="${P}team.html#appointments" data-magnetic>Book Financial Planning</a>
       <a class="btn btn-gold nav-portal" href="${PORTAL_URL}" referrerpolicy="no-referrer">Client Portal</a>
-      <button class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>`;
   document.body.insertBefore(header, document.body.firstChild);
 
@@ -89,30 +88,6 @@
   skip.href = firstSection && firstSection.id ? "#" + firstSection.id : "#main-content";
   skip.textContent = "Skip to content";
   document.body.insertBefore(skip, header);
-
-  /* ---------------- MOBILE MENU ---------------- */
-  const mm = document.createElement("div");
-  mm.className = "mobile-menu";
-  mm.innerHTML = `
-    <a href="${P || "index.html"}">Home</a>
-    <a href="${PORTAL_URL}" referrerpolicy="no-referrer">Client Portal</a>
-    <a href="${P}services.html">Services</a>
-    <!-- Insights temporarily hidden: <a href="${P}blog.html">Insights</a> -->
-    <a href="${P}team.html">Team</a>
-    <button type="button" class="mm-areas-btn" aria-expanded="false">Service Areas</button>
-    <div class="mm-areas" hidden>
-      ${areas.map((g) => `
-        <div class="mm-area">
-          <div class="mm-area-prov"><span class="mega-code">${g.code}</span>${g.province}</div>
-          <div class="mm-area-cities">${g.cities.map((n) => `<span>${n}</span>`).join("")}</div>
-        </div>`).join("")}
-    </div>
-    <a href="${P || "index.html"}#contact">Contact</a>
-    <div class="mm-foot">
-      <a class="tel-inline" href="tel:+14379256546" aria-label="Call us at (437) 925-6546">${PHONE_SVG}<span>+1 (437) 925-6546</span></a>
-      <a href="mailto:info@shelevate.ca">info@shelevate.ca</a>
-    </div>`;
-  document.body.insertBefore(mm, header.nextSibling);
 
   /* ---------------- FOOTER ---------------- */
   const footerAreas = [
@@ -127,23 +102,24 @@
     <div class="wrap">
       <div class="footer-top">
         <div class="footer-brand">
-          <img class="logo-img" src="${P}images/logo-white.png" alt="SH Elevate Tax Inc." width="220" height="141" />
+          <img class="logo-img" src="${P}images/logo-white-web.webp" alt="SH Elevate Tax Inc." width="220" height="141" />
           <p>Serving clients across Canada.</p>
-          <a class="footer-cta-link" href="${P}team.html">Book financial planning →</a>
+          <a class="footer-cta-link" href="${P}team.html#appointments">Book financial planning →</a>
         </div>
         <div class="footer-col">
-          <h4>Navigation</h4>
+          <h3>Navigation</h3>
           <ul>
             <li><a href="${P || "index.html"}">Home</a></li>
             <li><a href="${PORTAL_URL}" referrerpolicy="no-referrer">Client Portal</a></li>
             <li><a href="${P}services.html">Services</a></li>
             <li><a href="${P}team.html">Our Team</a></li>
+            <li><a href="${P}service-areas.html">Service areas</a></li>
             <!-- Insights temporarily hidden: <li><a href="${P}blog.html">Insights</a></li> -->
             <li><a href="${P || "index.html"}#contact">Contact</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Services</h4>
+          <h3>Services</h3>
           <ul>
             <li><a href="${P}services-personal-tax.html">Personal Tax Services</a></li>
             <li><a href="${P}services-corporate-tax.html">Corporate Tax Services</a></li>
@@ -152,16 +128,16 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Contact</h4>
+          <h3>Contact</h3>
           <ul>
             <li><a href="mailto:info@shelevate.ca">info@shelevate.ca</a></li>
-            <li><a class="tel-inline" href="tel:+14379256546" aria-label="Call us at (437) 925-6546">${PHONE_SVG}<span>+1 (437) 925-6546</span></a></li>
+            <li><a class="tel-inline" href="tel:+14379256546" aria-label="Call +1 (437) 925-6546">${PHONE_SVG}<span>+1 (437) 925-6546</span></a></li>
             <li>36 Lee Centre Dr, Scarborough ON M1H 3K2</li>
           </ul>
         </div>
       </div>
       <div class="footer-areas">
-        <div class="fa-head"><h4>Service Areas Across Canada</h4></div>
+        <div class="fa-head"><h3>Service Areas Across Canada</h3></div>
         <div class="fa-groups">
           ${footerAreas.map((g) => `
             <div class="fa-group">
@@ -177,10 +153,39 @@
     </div>`;
   document.body.appendChild(footer);
 
+  /* Floating shortcuts. The original header remains available on every page. */
+  const island = document.createElement("nav");
+  island.className = "quick-island";
+  island.setAttribute("aria-label", "Quick navigation");
+  const icon = (path) => `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${path}"/></svg>`;
+  const home = active === "home";
+  const actions = [
+    ["Home", home ? "#top" : P + "index.html", "M3.5 10 12 3l8.5 7v10.5h-6v-7h-5v7h-6z", home],
+    ["Services", home ? "#services" : P + "services.html", "M4 4h6v6H4z M14 4h6v6h-6z M4 14h6v6H4z M14 14h6v6h-6z", active === "services"],
+    ["Book", P + "team.html#appointments", "M4 6h16v14H4z M8 3v5 M16 3v5 M4 11h16", active === "team"],
+    ["Client Portal", PORTAL_URL, "M3 7q0-1 1-1h5l2 2h9q1 0 1 1v10H3z", false],
+  ];
+  island.innerHTML = actions.map(([label, href, path, current]) =>
+    `<a href="${href}"${current ? ' aria-current="location"' : ""}${href === PORTAL_URL ? ' referrerpolicy="no-referrer"' : ""}>${icon(path)}${label}</a>`
+  ).join("") + `
+    <a href="tel:+14379256546">${PHONE_SVG}Contact</a>`;
+  document.body.appendChild(island);
+
+  if (home) {
+    const servicesSection = document.getElementById("services");
+    const homeLink = island.querySelector('[href="#top"]');
+    const servicesLink = island.querySelector('[href="#services"]');
+    new IntersectionObserver(([entry]) => {
+      const [selected, other] = entry.isIntersecting ? [servicesLink, homeLink] : [homeLink, servicesLink];
+      selected.setAttribute("aria-current", "location");
+      other.removeAttribute("aria-current");
+    }).observe(servicesSection);
+  }
+
   /* ---------------- PAGE TRANSITION CURTAIN ---------------- */
   const curtain = document.createElement("div");
   curtain.className = "page-curtain";
-  curtain.innerHTML = `<img class="logo-img" src="${P}images/logo-white.png" alt="" /><span class="curtain-bar"></span>`;
+  curtain.innerHTML = `<img class="logo-img" src="${P}images/logo-white-web.webp" alt="" /><span class="curtain-bar"></span>`;
   document.body.appendChild(curtain);
 
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -209,6 +214,8 @@
   document.addEventListener("click", (e) => {
     const a = e.target.closest("a");
     if (!isInternal(a)) return;
+    const destination = new URL(a.href);
+    if (destination.hash && destination.pathname === location.pathname && destination.search === location.search) return;
     if (reduce) return;
     e.preventDefault();
     const href = a.getAttribute("href");
@@ -221,8 +228,10 @@
      On a phone, tapping a tel: link dials natively — leave it alone. On a
      desktop (no dialer), a click is a dead end, so intercept it and show a
      "scan to call from your phone" QR instead. */
-  const canDial = window.matchMedia("(pointer: coarse)").matches;
-  if (!canDial) {
+  const desktopPointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+  const mobileDevice = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ||
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  if (!mobileDevice && desktopPointer.matches) {
     const pop = document.createElement("div");
     pop.className = "callpop";
     pop.setAttribute("role", "dialog");
@@ -248,6 +257,7 @@
     const copyBtn = pop.querySelector(".callpop-copy");
     const copyLabel = copyBtn.querySelector("span");
     let currentTel = "";
+    let trigger = null;
 
     const digitsOf = (tel) => tel.replace(/[^0-9]/g, "");
     const qrFor = () => P + "images/call-qr-437.svg";
@@ -265,11 +275,13 @@
       copyBtn.classList.remove("copied");
       copyLabel.textContent = "Copy number";
       pop.classList.add("open");
+      pop.querySelector(".callpop-close").focus();
       document.addEventListener("keydown", onKey);
     }
     function close() {
       pop.classList.remove("open");
       document.removeEventListener("keydown", onKey);
+      if (trigger) trigger.focus({ preventScroll: true });
     }
 
     pop.addEventListener("click", (e) => { if (e.target.closest("[data-close]")) close(); });
@@ -281,9 +293,12 @@
 
     document.addEventListener("click", (e) => {
       const a = e.target.closest('a[href^="tel:"]');
-      if (!a) return;
+      if (!a || pop.contains(a) || !desktopPointer.matches) return;
+      const tel = a.getAttribute("href").slice(4).trim();
+      if (digitsOf(tel).replace(/^1/, "") !== "4379256546") return;
       e.preventDefault();
-      open(a.getAttribute("href").replace(/^tel:/, "").trim());
+      trigger = a;
+      open(tel);
     });
   }
 })();

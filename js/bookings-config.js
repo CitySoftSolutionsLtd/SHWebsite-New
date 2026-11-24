@@ -1,5 +1,5 @@
 /* Public booking + staff list. Empty URLs stay off until a real calendar link is added.
-   Add or remove people here — shareable pages (profile.html?who=<slug>) and ratings follow the slug.
+   After changing the roster, run node scripts/prepare-seo.cjs to refresh the public profile pages and sitemap.
    Ratings are stored in the client-portal database, keyed by this slug, not by a portal login. */
 window.SH_BOOKINGS = {
   pageUrl: "",

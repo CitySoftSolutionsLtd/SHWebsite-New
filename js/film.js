@@ -1,7 +1,7 @@
 /* =====================================================================
    SH Elevate Tax Inc. — Cinematic scroll "film"
-   Loading-% intro + pinned chaptered scenes that crossfade with a slow
-   Ken-Burns zoom as you scroll, plus chapter counter + progress HUD.
+   Pinned chaptered scenes that crossfade with a slow
+   Ken-Burns zoom as you scroll.
    Keeps the brand theme — this is motion/layout only.
    Requires gsap + ScrollTrigger + (optional) Lenis via window.__lenis.
    ===================================================================== */
@@ -9,63 +9,25 @@
   "use strict";
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* ---------------- Loading intro ---------------- */
-  const loader = document.getElementById("film-loader");
-  if (loader && !reduce) {
-    const pctEl = loader.querySelector(".fl-pct");
-    const barEl = loader.querySelector(".fl-bar span");
-    const lenis = window.__lenis;
-    if (lenis) lenis.stop();
-    document.body.style.overflow = "hidden";
-
-    let finished = false;
-    const finish = () => {
-      if (finished) return; finished = true;
-      pctEl.textContent = "100"; barEl.style.width = "100%";
-      loader.classList.add("done");
-      window.dispatchEvent(new Event("sh:loaded"));   // cue the hero entrance
-      if (lenis) lenis.start();
-      document.body.style.overflow = "";
-      setTimeout(() => loader && loader.remove(), 1000);
-      if (window.ScrollTrigger) ScrollTrigger.refresh();
-    };
-
-    const dur = 850, t0 = performance.now();
-    (function tick(now) {
-      const k = Math.min(1, ((now || performance.now()) - t0) / dur);
-      const p = Math.round((1 - Math.pow(1 - k, 2)) * 100);
-      pctEl.textContent = String(p).padStart(3, "0");
-      barEl.style.width = p + "%";
-      if (k < 1 && !finished) requestAnimationFrame(tick);
-      else if (!finished) setTimeout(finish, 240);
-    })(t0);
-
-    // Hard safety net: never let the loader hang / lock scroll (throttled rAF, bg tab, etc.)
-    setTimeout(finish, dur + 1400);
-  } else if (loader) {
-    loader.remove();
-  }
-
   /* ---------------- The film ---------------- */
   const film = document.querySelector(".film");
   if (!film) return;
   const imgs = Array.from(film.querySelectorAll(".chapter-img"));
   const texts = Array.from(film.querySelectorAll(".chapter-text"));
   const N = imgs.length;
-  const countCur = film.querySelector(".fh-count b");
-  const progBar = film.querySelector(".fh-progress span");
-  const ticks = Array.from(film.querySelectorAll(".fh-chapters i"));
 
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
-  const pad = (n) => String(n).padStart(2, "0");
 
+  const previousOpacity = new Array(N);
   function paint(progress) {
     const t = progress * N;                 // 0..N
-    let active = clamp(Math.floor(t), 0, N - 1);
     for (let i = 0; i < N; i++) {
-      const fadeIn = clamp((t - (i - 0.18)) / 0.36, 0, 1);
-      const fadeOut = clamp(((i + 1.18) - t) / 0.36, 0, 1);
+      const fadeIn = i === 0 ? 1 : clamp((t - (i - 0.18)) / 0.36, 0, 1);
+      const fadeOut = i === N - 1 ? 1 : clamp(((i + 1.18) - t) / 0.36, 0, 1);
       const vis = Math.min(fadeIn, fadeOut);
+      // Only the visible scene and its crossfade neighbour need transforms.
+      if (vis === 0 && previousOpacity[i] === 0) continue;
+      previousOpacity[i] = vis;
       const within = clamp(t - i, 0, 1);     // 0..1 progress through chapter
       imgs[i].style.opacity = vis.toFixed(3);
       imgs[i].style.transform = `scale(${(1.14 - within * 0.14).toFixed(4)})`;
@@ -74,14 +36,39 @@
         texts[i].style.transform = `translateY(${((0.5 - within) * 46).toFixed(1)}px)`;
       }
     }
-    if (countCur) countCur.textContent = pad(active + 1);
-    if (progBar) progBar.style.width = (progress * 100).toFixed(1) + "%";
-    ticks.forEach((tk, i) => tk.classList.toggle("on", i <= active));
   }
 
-  if (reduce || typeof ScrollTrigger === "undefined") {
+  if (reduce) return; // CSS lays out all four scenes in reading order.
+  if (document.body.classList.contains("native-film-scroll")) {
+    const stage = film.querySelector(".film-stage");
+    // Match the touch pin distance of the ScrollTrigger version. The browser
+    // holds the stage in place; both versions paint the same scene transitions.
+    film.style.setProperty("--film-travel", (N * 60) + "svh");
+    let scheduled = false;
+    let previous = -1;
+    const update = () => {
+      scheduled = false;
+      const rect = film.getBoundingClientRect();
+      const travel = Math.max(1, rect.height - stage.offsetHeight);
+      const progress = clamp(-rect.top / travel, 0, 1);
+      if (progress === previous) return;
+      previous = progress;
+      paint(progress);
+    };
+    const schedule = () => {
+      if (scheduled) return;
+      scheduled = true;
+      requestAnimationFrame(update);
+    };
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    window.addEventListener("pageshow", schedule);
+    update();
+    return;
+  }
+  if (typeof ScrollTrigger === "undefined") {
     // static fallback — show first chapter
-    paint(0.0001);
+    paint(0);
     return;
   }
 
@@ -104,5 +91,5 @@
 
   setTimeout(() => ScrollTrigger.refresh(), 250);
 
-  window.__film = { paint, killLoader() { if (loader) loader.remove(); if (window.__lenis) window.__lenis.start(); document.body.style.overflow = ""; } };
+  window.__film = { paint };
 })();
