@@ -203,9 +203,12 @@
     const desktopMotion = !isMobile;
     if (desktopMotion || hasFilm) {
       const nativeFilm = hasFilm && CSS.supports("overflow-x", "clip") && CSS.supports("height", "1svh");
-      const scripts = desktopMotion || !nativeFilm ? ["lib/gsap.min.js", "lib/ScrollTrigger.min.js"] : [];
+      // Modern desktops can run parallax on the browser's scroll timeline.
+      const nativeMotion = typeof ViewTimeline === "function" && CSS.supports("animation-range: exit 0% exit 100%") && !document.querySelector(".process-pin");
+      const needsLibrary = (desktopMotion && !nativeMotion) || (hasFilm && !nativeFilm);
+      const scripts = needsLibrary ? ["lib/gsap.min.js", "lib/ScrollTrigger.min.js"] : [];
       if (nativeFilm) document.body.classList.add("native-film-scroll");
-      if (desktopMotion) scripts.push("cinematic.js");
+      if (desktopMotion) scripts.push(nativeMotion ? "native-motion.js" : "cinematic.js");
       if (hasFilm) scripts.push("film.js");
       const base = new URL(".", document.currentScript.src);
       for (const file of scripts) {

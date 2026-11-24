@@ -41,9 +41,9 @@
   if (reduce) return; // CSS lays out all four scenes in reading order.
   if (document.body.classList.contains("native-film-scroll")) {
     const stage = film.querySelector(".film-stage");
-    // Keep the original travel distance for each layout while CSS pins the stage.
+    // Give each photo about two-thirds of a screen of travel on desktop.
     const compact = window.matchMedia("(max-width: 1024px), (pointer: coarse)");
-    const setTravel = () => film.style.setProperty("--film-travel", (N * (compact.matches ? 60 : 110)) + "svh");
+    const setTravel = () => film.style.setProperty("--film-travel", (N * (compact.matches ? 60 : 65)) + "svh");
     setTravel();
     compact.addEventListener("change", setTravel);
     let scheduled = false;
@@ -90,7 +90,7 @@
   ScrollTrigger.create({
     trigger: ".film",
     start: "top top",
-    end: "+=" + (N * (lite ? 60 : 110)) + "%",
+    end: "+=" + (N * (lite ? 60 : 65)) + "%",
     pin: ".film-stage",
     scrub: lite ? 0.35 : 0.6,
     onUpdate: (self) => paint(self.progress),

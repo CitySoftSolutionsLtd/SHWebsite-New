@@ -145,7 +145,7 @@
   drift(".stat-badge", 26, -50);
 
   /* ---------- 4) Framed images inner-parallax ---------- */
-  gsap.utils.toArray(".split-media img, .why-media img, .philo-media .frame img, .blog-feature .bf-media img").forEach((img) => {
+  gsap.utils.toArray(".split-media img, .why-media img, .philo-media .frame img, .blog-feature .bf-media img").filter(img => !img.hasAttribute("data-img-parallax")).forEach((img) => {
     const box = img.parentElement;
     gsap.fromTo(img, { yPercent: -8 }, {
       yPercent: 8, ease: "none",
