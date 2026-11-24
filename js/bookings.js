@@ -60,6 +60,7 @@
   let turnstileWidgetId = null;
   let turnstileToken = "";
   let openedAt = 0;
+  let continueTimer;
   let pendingUrl = "";
   let scriptLoading = false;
 
@@ -113,11 +114,10 @@
     if (profile) profile.classList.remove("open");
     const m = modal();
     if (!m) return;
+    clearTimeout(continueTimer);
     pendingUrl = url || "";
     openedAt = Date.now();
     turnstileToken = "";
-    const human = document.getElementById("book-human");
-    if (human) human.checked = false;
     showMsg("");
     const heading = document.getElementById("book-modal-title");
     if (heading) heading.textContent = title || "Book a financial planning consultation";
@@ -142,6 +142,7 @@
   function closeBookings() {
     const m = modal();
     if (!m) return;
+    clearTimeout(continueTimer);
     m.classList.remove("open");
     document.body.style.overflow = "";
     if (window.__lenis) window.__lenis.start();
@@ -159,8 +160,11 @@
 
   function continueToCalendar() {
     if (honeypotFilled()) return;
-    if (Date.now() - openedAt < MIN_DWELL_MS) {
-      showMsg("Please wait a moment, then try again.");
+    clearTimeout(continueTimer);
+    const wait = MIN_DWELL_MS - (Date.now() - openedAt);
+    if (wait > 0) {
+      showMsg("Opening calendar…");
+      continueTimer = setTimeout(continueToCalendar, wait);
       return;
     }
     if (!underCap()) {
@@ -169,11 +173,6 @@
     }
     if (turnstileReady && window.turnstile && !turnstileToken) {
       showMsg("Please confirm this booking.");
-      return;
-    }
-    const human = document.getElementById("book-human");
-    if (human && !human.checked) {
-      showMsg("Please confirm you are booking this appointment.");
       return;
     }
     if (!isAllowedBookingsUrl(pendingUrl)) {

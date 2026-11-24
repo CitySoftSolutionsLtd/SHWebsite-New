@@ -87,18 +87,14 @@
     <button type="button" class="rm-close" data-book-close aria-label="Close">&times;</button>
     <h2 id="book-modal-title">Book a financial planning consultation</h2>
     <div id="book-gate">
-      <p class="lede">Confirm, then pick a time. You’ll get a confirmation after you book.</p>
+      <p class="lede">Choose your appointment time on Microsoft Bookings.</p>
       <label class="book-hp" aria-hidden="true">
         <span>Company website</span>
         <input id="book-hp" type="text" name="company_website" tabindex="-1" autocomplete="off" />
       </label>
       <div id="book-turnstile" class="book-turnstile"></div>
-      <label class="book-human">
-        <input id="book-human" type="checkbox" />
-        <span>I want to book this time</span>
-      </label>
       <p id="book-gate-msg" class="book-gate-msg" role="status"></p>
-      <button type="button" class="btn btn-gold" id="book-continue">Continue <span class="btn-arrow">→</span></button>
+      <button type="button" class="btn btn-gold" id="book-continue">Open Microsoft Bookings <span class="btn-arrow">→</span></button>
     </div>
     <div id="book-frame-wrap" hidden>
       <iframe id="book-frame" title="Booking calendar" referrerpolicy="no-referrer-when-downgrade" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
