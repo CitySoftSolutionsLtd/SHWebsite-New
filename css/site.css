@@ -403,19 +403,6 @@ em.gold, .gold-text { color: var(--gold-light); font-style: normal; }
   opacity: 1; transform: none;
 }
 
-/* Desktop visitors can read and use the homepage while its photo loads. */
-@media (min-width: 1025px) and (pointer: fine) {
-  .hero .hero-eyebrow, .hero .lede, .hero .hero-actions {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-}
-@media (min-width: 1025px) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .hero-inner { animation: hero-enter .32s var(--ease) both; }
-  @keyframes hero-enter { from { transform: translateY(6px); } to { transform: none; } }
-}
-
 /* Begin the mobile introduction at first paint, independently of the
    scroll libraries. The text is readable throughout the same rising motion. */
 @media (max-width: 1024px), (pointer: coarse) {

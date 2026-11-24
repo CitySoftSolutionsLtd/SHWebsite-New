@@ -39,11 +39,12 @@
   }
 
   if (reduce) return; // CSS lays out all four scenes in reading order.
+  // Use the same scroll distance for sticky and ScrollTrigger scenes.
+  const compact = window.matchMedia("(max-width: 1024px), (pointer: coarse)");
+  const travelPercent = () => N * (compact.matches ? 60 : 45);
   if (document.body.classList.contains("native-film-scroll")) {
     const stage = film.querySelector(".film-stage");
-    // Give each photo about two-thirds of a screen of travel on desktop.
-    const compact = window.matchMedia("(max-width: 1024px), (pointer: coarse)");
-    const setTravel = () => film.style.setProperty("--film-travel", (N * (compact.matches ? 60 : 65)) + "svh");
+    const setTravel = () => film.style.setProperty("--film-travel", travelPercent() + "svh");
     setTravel();
     compact.addEventListener("change", setTravel);
     let scheduled = false;
@@ -82,17 +83,12 @@
 
   gsap.registerPlugin(ScrollTrigger);
   paint(0);
-  // Phones/tablets/touch: shorter pin distance + snappier scrub so the film
-  // doesn't "hold" the scroll for 4+ screen-heights (the chaptered crossfade
-  // still plays, it just tracks the finger more closely and releases sooner).
-  const lite = window.matchMedia("(max-width: 1024px)").matches ||
-               window.matchMedia("(pointer: coarse)").matches;
   ScrollTrigger.create({
     trigger: ".film",
     start: "top top",
-    end: "+=" + (N * (lite ? 60 : 65)) + "%",
+    end: () => "+=" + travelPercent() + "%",
     pin: ".film-stage",
-    scrub: lite ? 0.35 : 0.6,
+    scrub: compact.matches ? 0.35 : true,
     onUpdate: (self) => paint(self.progress),
     onRefresh: (self) => paint(self.progress),
   });

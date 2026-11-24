@@ -84,7 +84,7 @@
     });
   }
   const headings = [...document.querySelectorAll(".display, .h-section")]
-    .filter((el) => !el.closest(".film") && (isMobile || !el.closest(".hero")));
+    .filter((el) => !el.closest(".film"));
   headings.forEach(splitHeading);
   const scrollHeads = headings.filter((el) => !el.closest(".hero, .page-hero"));
   const headIO = new IntersectionObserver(
