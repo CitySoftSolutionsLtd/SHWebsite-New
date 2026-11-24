@@ -20,6 +20,7 @@
     try {
       const u = new URL(raw);
       if (u.protocol !== "https:") return false;
+      if (u.hostname === "bookings.cloud.microsoft") return true;
       return ALLOWED.some((h) => u.hostname === h || u.hostname.endsWith("." + h));
     } catch (e) {
       return false;
@@ -180,6 +181,12 @@
       return;
     }
     recordOpen();
+    const destination = new URL(pendingUrl);
+    if (destination.hostname === "bookings.cloud.microsoft" && destination.pathname.startsWith("/bookwithme/")) {
+      closeBookings();
+      window.location.assign(destination.href);
+      return;
+    }
     const frame = document.getElementById("book-frame");
     if (frame) frame.src = pendingUrl;
     setStage("frame");

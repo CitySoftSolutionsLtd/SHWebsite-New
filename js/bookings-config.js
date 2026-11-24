@@ -19,7 +19,7 @@ window.SH_BOOKINGS = {
       experience: "",
       location: "Scarborough, ON",
       languages: ["English"],
-      bookingsUrl: "",
+      bookingsUrl: "https://bookings.cloud.microsoft/bookwithme/user/4f5e27cbb5164a9b848e8c5c027dd31f@shelevate.ca?anonymous&ismsaljsauthenabled&ep=plink",
     },
     {
       published: true,
