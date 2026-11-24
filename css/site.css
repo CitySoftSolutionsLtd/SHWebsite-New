@@ -1488,7 +1488,7 @@ a[href^="tel:"]:focus:not(:focus-visible) { outline: none; }
   border-color: transparent;
 }
 .quick-island a[href="#top"][aria-current] svg,
-.quick-island a[href="#services"][aria-current] svg { fill: currentColor; }
+.quick-island a[href$="services.html"][aria-current] svg { fill: currentColor; }
 .quick-island svg {
   width: 23px; height: 23px; flex: none;
   stroke: currentColor; fill: none;

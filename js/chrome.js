@@ -161,7 +161,7 @@
   const home = active === "home";
   const actions = [
     ["Home", home ? "#top" : P + "index.html", "M3.5 10 12 3l8.5 7v10.5h-6v-7h-5v7h-6z", home],
-    ["Services", home ? "#services" : P + "services.html", "M4 4h6v6H4z M14 4h6v6h-6z M4 14h6v6H4z M14 14h6v6h-6z", active === "services"],
+    ["Services", P + "services.html", "M4 4h6v6H4z M14 4h6v6h-6z M4 14h6v6H4z M14 14h6v6h-6z", active === "services"],
     ["Book", P + "team.html#appointments", "M4 6h16v14H4z M8 3v5 M16 3v5 M4 11h16", active === "team"],
     ["Client Portal", PORTAL_URL, "M3 7q0-1 1-1h5l2 2h9q1 0 1 1v10H3z", false],
   ];
@@ -170,17 +170,6 @@
   ).join("") + `
     <a href="tel:+14379256546">${PHONE_SVG}Contact</a>`;
   document.body.appendChild(island);
-
-  if (home) {
-    const servicesSection = document.getElementById("services");
-    const homeLink = island.querySelector('[href="#top"]');
-    const servicesLink = island.querySelector('[href="#services"]');
-    new IntersectionObserver(([entry]) => {
-      const [selected, other] = entry.isIntersecting ? [servicesLink, homeLink] : [homeLink, servicesLink];
-      selected.setAttribute("aria-current", "location");
-      other.removeAttribute("aria-current");
-    }).observe(servicesSection);
-  }
 
   /* ---------------- PAGE TRANSITION CURTAIN ---------------- */
   const curtain = document.createElement("div");
@@ -213,7 +202,7 @@
   };
   document.addEventListener("click", (e) => {
     const a = e.target.closest("a");
-    if (!isInternal(a)) return;
+    if (!isInternal(a) || island.contains(a)) return;
     const destination = new URL(a.href);
     if (destination.hash && destination.pathname === location.pathname && destination.search === location.search) return;
     if (reduce) return;
