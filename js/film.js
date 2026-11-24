@@ -3,7 +3,7 @@
    Pinned chaptered scenes that crossfade with a slow
    Ken-Burns zoom as you scroll.
    Keeps the brand theme — this is motion/layout only.
-   Requires gsap + ScrollTrigger + (optional) Lenis via window.__lenis.
+   Uses native sticky positioning with a ScrollTrigger fallback.
    ===================================================================== */
 (function () {
   "use strict";
@@ -41,9 +41,11 @@
   if (reduce) return; // CSS lays out all four scenes in reading order.
   if (document.body.classList.contains("native-film-scroll")) {
     const stage = film.querySelector(".film-stage");
-    // Match the touch pin distance of the ScrollTrigger version. The browser
-    // holds the stage in place; both versions paint the same scene transitions.
-    film.style.setProperty("--film-travel", (N * 60) + "svh");
+    // Keep the original travel distance for each layout while CSS pins the stage.
+    const compact = window.matchMedia("(max-width: 1024px), (pointer: coarse)");
+    const setTravel = () => film.style.setProperty("--film-travel", (N * (compact.matches ? 60 : 110)) + "svh");
+    setTravel();
+    compact.addEventListener("change", setTravel);
     let scheduled = false;
     let previous = -1;
     const update = () => {
@@ -60,7 +62,13 @@
       scheduled = true;
       requestAnimationFrame(update);
     };
-    window.addEventListener("scroll", schedule, { passive: true });
+    new IntersectionObserver(([entry]) => {
+      for (const scroller of [window, document.body]) {
+        if (entry.isIntersecting) scroller.addEventListener("scroll", schedule, { passive: true });
+        else scroller.removeEventListener("scroll", schedule);
+      }
+      schedule();
+    }).observe(film);
     window.addEventListener("resize", schedule);
     window.addEventListener("pageshow", schedule);
     update();

@@ -76,7 +76,7 @@
     </nav>
     <div class="nav-right">
       <a class="nav-phone" href="tel:+14379256546" aria-label="Call us at (437) 925-6546">${PHONE_SVG}<span>(437) 925-6546</span></a>
-      <a class="btn btn-gold nav-cta" href="${P}team.html#appointments" data-magnetic>Book Financial Planning</a>
+      <a class="btn btn-gold nav-cta" href="${P}team.html#appointments" data-magnetic><span>Book<span class="booking-detail"> Financial Planning</span></span></a>
       <a class="btn btn-gold nav-portal" href="${PORTAL_URL}" referrerpolicy="no-referrer">Client Portal</a>
     </div>`;
   document.body.insertBefore(header, document.body.firstChild);

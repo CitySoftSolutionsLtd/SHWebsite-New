@@ -6,32 +6,6 @@
   const isMobile = window.matchMedia("(max-width: 1024px)").matches || isTouch;
   const hasGSAP = typeof window.gsap !== "undefined";
 
-  /* ---------------- Lenis smooth scroll ----------------
-     Desktop / pointer devices only. On touch devices Lenis overrides the
-     native momentum + inertia the OS already provides, which is the #1 cause
-     of the "draggy" / high-friction scroll feel on phones — so there we let
-     the browser scroll natively. */
-  let lenis = null;
-  if (typeof window.Lenis !== "undefined" && !reduce && !isTouch) {
-    lenis = new Lenis({
-      lerp: 0.08,
-      wheelMultiplier: 1,
-      smoothWheel: true,
-    });
-    window.__lenis = lenis;
-
-    if (hasGSAP && window.ScrollTrigger) {
-      // Drive Lenis from the GSAP ticker ONLY (avoids double-rAF jank)
-      lenis.on("scroll", ScrollTrigger.update);
-      gsap.ticker.add((t) => lenis.raf(t * 1000));
-      gsap.ticker.lagSmoothing(0);
-    } else {
-      // Fallback driver when GSAP isn't present
-      const raf = (t) => { lenis.raf(t); requestAnimationFrame(raf); };
-      requestAnimationFrame(raf);
-    }
-  }
-
   /* ---------------- GSAP ScrollTrigger effects ---------------- */
   if (hasGSAP && window.ScrollTrigger && !reduce) {
     gsap.registerPlugin(ScrollTrigger);
@@ -92,7 +66,6 @@
 
     // Section heading lines subtle parallax fade handled by reveals
 
-    ScrollTrigger.refresh();
   } else {
     // No-GSAP fallback: ensure process visible
     document.querySelectorAll(".p-step").forEach((s) => s.classList.remove("dim"));
@@ -160,7 +133,6 @@
   /* ---------- 3) Layered drift through every page ---------- */
   function drift(sel, from, to, scrub) {
     gsap.utils.toArray(sel).forEach((el) => {
-      el.style.willChange = "transform";
       gsap.fromTo(el, { y: from * k }, {
         y: to * k, ease: "none",
         scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: 0.4 },
@@ -181,5 +153,5 @@
     });
   });
 
-  setTimeout(() => ScrollTrigger.refresh(), 200);
+
 })();

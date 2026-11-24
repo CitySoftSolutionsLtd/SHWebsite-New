@@ -13,10 +13,10 @@
   /* ---------------- NAV ---------------- */
   const nav = document.querySelector(".nav");
   const onScrollNav = () => {
-    if (window.scrollY > 40) nav.classList.add("scrolled");
-    else nav.classList.remove("scrolled");
+    nav.classList.toggle("scrolled", Math.max(window.scrollY, document.body.scrollTop) > 40);
   };
   window.addEventListener("scroll", onScrollNav, { passive: true });
+  document.body.addEventListener("scroll", onScrollNav, { passive: true });
   onScrollNav();
 
   // Service Areas mega-menu dropdown
@@ -40,8 +40,7 @@
       const target = document.querySelector(id);
       if (!target) return;
       e.preventDefault();
-      if (window.__lenis) window.__lenis.scrollTo(target, { offset: -80 });
-      else target.scrollIntoView({ behavior: reduce ? "instant" : "smooth" });
+      target.scrollIntoView({ behavior: reduce ? "instant" : "smooth" });
     });
   });
 
@@ -55,25 +54,6 @@
     { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
   );
   document.querySelectorAll("[data-reveal], .clip-line").forEach((el) => io.observe(el));
-
-  /* Fail-safe for service cards: their photo-wipe reveal must never leave a card
-     hidden. Reveal any card once it's within view, driven by scroll (independent
-     of the IntersectionObserver), plus a one-shot pass shortly after load. */
-  const svcCards = document.querySelectorAll(".svc-card[data-reveal]");
-  const revealSvc = () => {
-    let pending = false;
-    svcCards.forEach((c) => {
-      if (c.classList.contains("in")) return;
-      if (c.getBoundingClientRect().top < window.innerHeight * 0.92) c.classList.add("in");
-      else pending = true;
-    });
-    if (!pending) window.removeEventListener("scroll", revealSvc);
-  };
-  if (svcCards.length) {
-    window.addEventListener("scroll", revealSvc, { passive: true });
-    setTimeout(revealSvc, 400);
-    window.addEventListener("load", () => setTimeout(revealSvc, 100));
-  }
 
   /* ---------------- Premium heading reveal (word-by-word blur-rise) ----------------
      Splits display + section headings into masked words. Hero headings fire as the
@@ -169,7 +149,7 @@
       item.classList.toggle("open", !open);
       q.setAttribute("aria-expanded", open ? "false" : "true");
       a.style.maxHeight = open ? null : a.scrollHeight + "px";
-      if (window.__lenis && window.ScrollTrigger) setTimeout(() => ScrollTrigger.refresh(), 560);
+      if (window.ScrollTrigger) setTimeout(() => ScrollTrigger.refresh(), 560);
     });
   });
 
@@ -220,12 +200,11 @@
   // parallel and also work in the downloadable file preview.
   if (!reduce) {
     const hasFilm = Boolean(document.querySelector(".film"));
-    const desktopMotion = !isTouch;
+    const desktopMotion = !isMobile;
     if (desktopMotion || hasFilm) {
-      const nativeFilm = hasFilm && isTouch && CSS.supports("overflow-x", "clip") && CSS.supports("height", "1svh");
-      const scripts = nativeFilm ? [] : ["lib/gsap.min.js", "lib/ScrollTrigger.min.js"];
+      const nativeFilm = hasFilm && CSS.supports("overflow-x", "clip") && CSS.supports("height", "1svh");
+      const scripts = desktopMotion || !nativeFilm ? ["lib/gsap.min.js", "lib/ScrollTrigger.min.js"] : [];
       if (nativeFilm) document.body.classList.add("native-film-scroll");
-      if (!isTouch) scripts.push("lib/lenis.min.js");
       if (desktopMotion) scripts.push("cinematic.js");
       if (hasFilm) scripts.push("film.js");
       const base = new URL(".", document.currentScript.src);
